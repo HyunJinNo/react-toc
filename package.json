@@ -1,0 +1,14 @@
+{
+  "name": "react-toc",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "HyunJinNo",
+  "license": "ISC",
+  "packageManager": "pnpm@10.32.1",
+  "private": true
+}
