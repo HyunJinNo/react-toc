@@ -1,11 +1,19 @@
+"use client";
+
+import { TocProvider, Toc, H2, H3 } from "@hyunjinno/react-toc";
 import Image from "next/image";
-import { Button } from "@hyunjinno/react-toc";
 
 export default function Home() {
   return (
     <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
       <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between bg-white px-16 py-32 sm:items-start dark:bg-black">
-        <Button title="TODO" />
+        <TocProvider>
+          <Toc />
+          <H2>1. TODO</H2>
+          <H2>2. TODO</H2>
+          <H3>2.1. TODO</H3>
+        </TocProvider>
+
         <Image
           className="dark:invert"
           src="/next.svg"
