@@ -1,6 +1,7 @@
 {
   "name": "react-toc",
   "version": "1.0.0",
+  "private": true,
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -9,6 +10,5 @@
   "keywords": [],
   "author": "HyunJinNo",
   "license": "ISC",
-  "packageManager": "pnpm@10.32.1",
-  "private": true
+  "packageManager": "pnpm@10.32.1"
 }

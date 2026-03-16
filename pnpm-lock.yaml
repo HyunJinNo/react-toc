@@ -6,7 +6,9 @@ settings:
 
 importers:
 
-  .:
+  .: {}
+
+  apps/demo:
     dependencies:
       next:
         specifier: 16.1.6
