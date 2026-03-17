@@ -4,6 +4,7 @@ import { Head } from "nextra/components";
 import { getPageMap } from "nextra/page-map";
 import "./globals.css";
 import "nextra-theme-docs/style.css";
+import "@hyunjinno/react-toc/style.css";
 
 export const metadata: Metadata = {
   title: "Create Next App",

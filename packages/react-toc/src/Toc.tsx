@@ -6,10 +6,10 @@ export const Toc = () => {
   const { activeId, tocItemList } = useContext(TocContext);
 
   return (
-    <section className="animate-fade-up sticky top-12 flex w-full flex-col gap-4 border-l border-gray-200 pb-4">
-      <h2 className="pl-4 font-medium text-[#585858]">Contents</h2>
-      <nav className="text-custom-gray text-sm">
-        <ul className="flex flex-col gap-2.5">
+    <section className="react-toc-wrapper">
+      <h2 className="react-toc-wrapper-heading">Contents</h2>
+      <nav>
+        <ul className="react-toc-list">
           {tocItemList.map((tocItem) => (
             <TocList key={tocItem.id} activeId={activeId} tocItem={tocItem} />
           ))}

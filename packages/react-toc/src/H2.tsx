@@ -6,7 +6,7 @@ type H2Props = React.ComponentProps<"h2"> & {
 
 export const H2 = ({ children, ...props }: H2Props) => {
   return (
-    <h2 className="tocHeading" id={slugify(children)} {...props}>
+    <h2 className="toc-heading" id={slugify(children)} {...props}>
       {children}
     </h2>
   );

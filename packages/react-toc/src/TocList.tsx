@@ -15,16 +15,16 @@ export const TocList = ({ activeId, tocItem }: TocListProps) => {
   };
 
   return (
-    <li key={tocItem.id} className="flex flex-col gap-2.5">
+    <li key={tocItem.id} className="react-toc-item">
       <a
         className={[
-          tocItem.tagName === "H2" && "pl-4",
-          tocItem.tagName === "H3" && "pl-7",
-          tocItem.tagName === "H4" && "pl-10",
-          tocItem.tagName === "H5" && "pl-13",
-          activeId === tocItem.id &&
-            "text-custom-blue border-custom-blue -ml-px border-l font-medium dark:border-blue-300 dark:text-blue-300",
-          "hover:text-custom-blue truncate hover:dark:text-blue-300",
+          tocItem.tagName === "H2" && "react-toc-h2",
+          tocItem.tagName === "H3" && "react-toc-h3",
+          tocItem.tagName === "H4" && "react-toc-h4",
+          tocItem.tagName === "H5" && "react-toc-h5",
+          tocItem.tagName === "H6" && "react-toc-h6",
+          activeId === tocItem.id && "react-toc-active",
+          "react-toc-link",
         ].join(" ")}
         href={`#${tocItem.id}`}
         onClick={(e) => {
@@ -46,7 +46,7 @@ export const TocList = ({ activeId, tocItem }: TocListProps) => {
         {tocItem.textContent}
       </a>
       {tocItem.children.length !== 0 && containsActive(tocItem) && (
-        <ul className="flex flex-col gap-2.5">
+        <ul className="react-toc-list">
           {tocItem.children.map((child) => (
             <TocList key={child.id} activeId={activeId} tocItem={child} />
           ))}
