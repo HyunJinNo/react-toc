@@ -1,11 +1,21 @@
+import clsx from "clsx";
 import { TocItem } from "./types";
 
 interface TocListProps {
   activeId: string;
   tocItem: TocItem;
+  itemClassName?: string;
+  linkClassName?: string;
+  activeClassName?: string;
 }
 
-export const TocList = ({ activeId, tocItem }: TocListProps) => {
+export const TocList = ({
+  activeId,
+  tocItem,
+  itemClassName,
+  linkClassName,
+  activeClassName,
+}: TocListProps) => {
   const containsActive = (tocItem: TocItem): boolean => {
     if (activeId === tocItem.id) {
       return true;
@@ -14,18 +24,23 @@ export const TocList = ({ activeId, tocItem }: TocListProps) => {
     return tocItem.children.some((child) => containsActive(child));
   };
 
+  const levelClass = {
+    H2: "react-toc-h2",
+    H3: "react-toc-h3",
+    H4: "react-toc-h4",
+    H5: "react-toc-h5",
+    H6: "react-toc-h6",
+  }[tocItem.tagName];
+
   return (
-    <li key={tocItem.id} className="react-toc-item">
+    <li key={tocItem.id} className={clsx("react-toc-item", itemClassName)}>
       <a
-        className={[
-          tocItem.tagName === "H2" && "react-toc-h2",
-          tocItem.tagName === "H3" && "react-toc-h3",
-          tocItem.tagName === "H4" && "react-toc-h4",
-          tocItem.tagName === "H5" && "react-toc-h5",
-          tocItem.tagName === "H6" && "react-toc-h6",
-          activeId === tocItem.id && "react-toc-active",
+        className={clsx(
           "react-toc-link",
-        ].join(" ")}
+          levelClass,
+          linkClassName,
+          activeId === tocItem.id && ["react-toc-active", activeClassName],
+        )}
         href={`#${tocItem.id}`}
         onClick={(e) => {
           e.preventDefault();

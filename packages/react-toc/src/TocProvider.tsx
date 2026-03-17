@@ -4,9 +4,10 @@ import { TocContext } from "./TocContext";
 
 interface TocProviderProps {
   children: React.ReactNode;
+  className?: string;
 }
 
-export const TocProvider = ({ children }: TocProviderProps) => {
+export const TocProvider = ({ children, className }: TocProviderProps) => {
   const ref = useRef<HTMLDivElement>(null);
   const [activeId, setActiveId] = useState("");
   const [tocItemList, setTocItemList] = useState<TocItem[]>([]);
@@ -89,7 +90,9 @@ export const TocProvider = ({ children }: TocProviderProps) => {
 
   return (
     <TocContext value={{ activeId, tocItemList }}>
-      <div ref={ref}>{children}</div>
+      <div className={className} ref={ref}>
+        {children}
+      </div>
     </TocContext>
   );
 };

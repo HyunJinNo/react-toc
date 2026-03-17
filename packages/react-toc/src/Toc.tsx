@@ -1,13 +1,21 @@
 import { useContext } from "react";
 import { TocList } from "./TocList";
 import { TocContext } from "./TocContext";
+import clsx from "clsx";
 
-export const Toc = () => {
+interface TocProps {
+  tocClassName?: string;
+  headingClassName?: string;
+}
+
+export const Toc = ({ tocClassName, headingClassName }: TocProps) => {
   const { activeId, tocItemList } = useContext(TocContext);
 
   return (
-    <section className="react-toc-wrapper">
-      <h2 className="react-toc-wrapper-heading">Contents</h2>
+    <section className={clsx("react-toc-wrapper", tocClassName)}>
+      <h2 className={clsx("react-toc-wrapper-heading", headingClassName)}>
+        Contents
+      </h2>
       <nav>
         <ul className="react-toc-list">
           {tocItemList.map((tocItem) => (

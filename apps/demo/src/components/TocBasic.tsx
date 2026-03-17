@@ -5,8 +5,8 @@ import { H2, H3, H4, Toc, TocProvider } from "@hyunjinno/react-toc";
 export const TocBasic = () => {
   return (
     <TocProvider>
-      <div className="flex flex-row justify-between">
-        <div className="border p-1">
+      <div className="flex flex-row justify-between border p-4">
+        <div>
           <H2>1. Heading</H2>
           <H2>2. Heading</H2>
           <H3>2.1. Heading</H3>
