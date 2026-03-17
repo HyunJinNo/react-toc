@@ -1,9 +1,13 @@
 import { slugify } from "./slugify";
 
-interface H2Props {
+type H2Props = React.ComponentProps<"h2"> & {
   children: string;
-}
+};
 
-export const H2 = ({ children }: H2Props) => {
-  return <h2 id={slugify(children)}>{children}</h2>;
+export const H2 = ({ children, ...props }: H2Props) => {
+  return (
+    <h2 id={slugify(children)} {...props}>
+      {children}
+    </h2>
+  );
 };
