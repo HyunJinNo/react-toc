@@ -14,4 +14,12 @@ const withNextra = nextra({
   // ... other Nextra config options
 });
 
-export default withNextra(nextConfig);
+export default withNextra({
+  ...nextConfig,
+  turbopack: {
+    resolveAlias: {
+      // Path to your `mdx-components` file with extension
+      "next-mdx-import-source-file": "./src/mdx-components.tsx",
+    },
+  },
+});
