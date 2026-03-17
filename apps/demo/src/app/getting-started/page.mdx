@@ -2,7 +2,11 @@
 title: Getting Started
 ---
 
+import { TocBasic } from "@/components/TocBasic";
+
 ## Install
+
+Run the following commands in the `React` project directory:
 
 npm:
 
@@ -10,4 +14,34 @@ npm:
 npm install @hyunjinno/react-toc
 ```
 
+yarn:
+
+```bash copy
+yarn add @hyunjinno/react-toc
+```
+
+pnpm:
+
+```bash copy
+pnpm add @hyunjinno/react-toc
+```
+
 ## Quick Start
+
+Introduce `TocProvider` and `Toc` components where they need to be used, basic usages:
+
+```tsx copy
+import { TocProvider } from "@hyunjinno/react-toc";
+
+export default function page() {
+  return <TocProvider></TocProvider>;
+}
+```
+
+<TocBasic />
+
+## ScrollSpy
+
+## Toc
+
+## TocProvider

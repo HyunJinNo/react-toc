@@ -5,5 +5,9 @@ type H4Props = React.ComponentProps<"h4"> & {
 };
 
 export const H4 = ({ children }: H4Props) => {
-  return <h4 id={slugify(children)}>{children}</h4>;
+  return (
+    <h4 className="tocHeading" id={slugify(children)}>
+      {children}
+    </h4>
+  );
 };

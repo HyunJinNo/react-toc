@@ -46,7 +46,7 @@ export const TocList = ({ activeId, tocItem }: TocListProps) => {
         {tocItem.textContent}
       </a>
       {tocItem.children.length !== 0 && containsActive(tocItem) && (
-        <ul className={["flex flex-col gap-2.5"].join(" ")}>
+        <ul className="flex flex-col gap-2.5">
           {tocItem.children.map((child) => (
             <TocList key={child.id} activeId={activeId} tocItem={child} />
           ))}

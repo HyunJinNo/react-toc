@@ -5,5 +5,9 @@ type H5Props = React.ComponentProps<"h5"> & {
 };
 
 export const H5 = ({ children }: H5Props) => {
-  return <h5 id={slugify(children)}>{children}</h5>;
+  return (
+    <h5 className="tocHeading" id={slugify(children)}>
+      {children}
+    </h5>
+  );
 };

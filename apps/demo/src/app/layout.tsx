@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Footer, Layout, Navbar } from "nextra-theme-docs";
 import { Head } from "nextra/components";
 import { getPageMap } from "nextra/page-map";
+import "./globals.css";
 import "nextra-theme-docs/style.css";
 
 export const metadata: Metadata = {
@@ -12,12 +13,18 @@ export const metadata: Metadata = {
 const navbar = (
   <Navbar
     logo={<b>react-toc</b>}
-
     // ... Your additional navbar options
   />
 );
 
-const footer = <Footer>MIT {new Date().getFullYear()} © Nextra.</Footer>;
+const footer = (
+  <Footer className="flex flex-row gap-1">
+    © {new Date().getFullYear()}
+    <a className="hover:underline" href="https://github.com/HyunJinNo">
+      HyunJinNo.
+    </a>
+  </Footer>
+);
 
 export default async function RootLayout({
   children,

@@ -29,7 +29,7 @@ export const TocProvider = ({ children }: TocProviderProps) => {
 
     const arr: TocItem[] = [];
 
-    for (const element of ref.current.children) {
+    for (const element of ref.current.querySelectorAll(".tocHeading")) {
       switch (element.tagName) {
         case "H2":
           arr.push({
