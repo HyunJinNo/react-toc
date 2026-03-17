@@ -1,8 +1,13 @@
 import type { NextConfig } from "next";
+import nextra from "nextra";
 
 const nextConfig: NextConfig = {
   /* config options here */
   reactCompiler: true,
 };
 
-export default nextConfig;
+const withNextra = nextra({
+  // ... other Nextra config options
+});
+
+export default withNextra(nextConfig);
