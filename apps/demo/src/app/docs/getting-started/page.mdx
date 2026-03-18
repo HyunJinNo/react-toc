@@ -1,8 +1,5 @@
----
-title: Getting Started
----
-
 import { TocBasic } from "@/components/TocBasic";
+import { Steps } from "nextra/components";
 
 ## Install
 
@@ -28,11 +25,17 @@ pnpm add @hyunjinno/react-toc
 
 ## Quick Start
 
+<Steps>
+
+### Step 1.
+
 Import the CSS file at the entry point of the application
 
 ```tsx copy
 import "@hyunjinno/react-toc/style.css";
 ```
+
+### Step 2.
 
 Introduce `TocProvider` and `Toc` components where they need to be used, basic usages:
 
@@ -63,6 +66,8 @@ export const TocBasic = () => {
   );
 };
 ```
+
+</Steps>
 
 <TocBasic />
 
