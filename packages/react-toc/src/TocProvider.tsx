@@ -5,9 +5,18 @@ import { TocContext } from "./TocContext";
 interface TocProviderProps {
   children: React.ReactNode;
   className?: string;
+  maxDepth?: 1 | 2 | 3 | 4 | 5;
+  observerOptions?: IntersectionObserverInit;
+  onActiveIdChange?: (id: string) => void;
 }
 
-export const TocProvider = ({ children, className }: TocProviderProps) => {
+export const TocProvider = ({
+  children,
+  className,
+  maxDepth = 5,
+  observerOptions,
+  onActiveIdChange,
+}: TocProviderProps) => {
   const ref = useRef<HTMLDivElement>(null);
   const [activeId, setActiveId] = useState("");
   const [tocItemList, setTocItemList] = useState<TocItem[]>([]);
@@ -22,10 +31,11 @@ export const TocProvider = ({ children, className }: TocProviderProps) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             setActiveId(entry.target.id);
+            onActiveIdChange?.(entry.target.id);
           }
         });
       },
-      { rootMargin: "0px 0px -80% 0px" },
+      { rootMargin: "0px 0px -80% 0px", ...observerOptions },
     );
 
     const arr: TocItem[] = [];
@@ -42,39 +52,46 @@ export const TocProvider = ({ children, className }: TocProviderProps) => {
           observer.observe(element);
           break;
         case "H3":
-          arr[arr.length - 1].children.push({
-            tagName: element.tagName,
-            textContent: element.textContent,
-            id: element.id,
-            children: [],
-          });
-          observer.observe(element);
+          if (maxDepth >= 2) {
+            arr[arr.length - 1].children.push({
+              tagName: element.tagName,
+              textContent: element.textContent,
+              id: element.id,
+              children: [],
+            });
+            observer.observe(element);
+          }
           break;
         case "H4":
-          arr[arr.length - 1].children[
-            arr[arr.length - 1].children.length - 1
-          ].children.push({
-            tagName: element.tagName,
-            textContent: element.textContent,
-            id: element.id,
-            children: [],
-          });
-          observer.observe(element);
-          break;
-        case "H5":
-          arr[arr.length - 1].children[
-            arr[arr.length - 1].children.length - 1
-          ].children[
+          if (maxDepth >= 3) {
             arr[arr.length - 1].children[
               arr[arr.length - 1].children.length - 1
-            ].children.length - 1
-          ].children.push({
-            tagName: element.tagName,
-            textContent: element.textContent,
-            id: element.id,
-            children: [],
-          });
-          observer.observe(element);
+            ].children.push({
+              tagName: element.tagName,
+              textContent: element.textContent,
+              id: element.id,
+              children: [],
+            });
+            observer.observe(element);
+          }
+          break;
+        case "H5":
+          if (maxDepth >= 4) {
+            arr[arr.length - 1].children[
+              arr[arr.length - 1].children.length - 1
+            ].children[
+              arr[arr.length - 1].children[
+                arr[arr.length - 1].children.length - 1
+              ].children.length - 1
+            ].children.push({
+              tagName: element.tagName,
+              textContent: element.textContent,
+              id: element.id,
+              children: [],
+            });
+            observer.observe(element);
+          }
+
           break;
         default:
           break;
@@ -86,7 +103,7 @@ export const TocProvider = ({ children, className }: TocProviderProps) => {
     return () => {
       observer.disconnect();
     };
-  }, []);
+  }, [maxDepth, observerOptions, onActiveIdChange]);
 
   return (
     <TocContext value={{ activeId, tocItemList }}>
