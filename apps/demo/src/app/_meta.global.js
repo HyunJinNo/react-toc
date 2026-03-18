@@ -1,6 +1,7 @@
 const config = {
   index: {
     type: "page",
+    title: "Easy-to-Use TOC Component",
     display: "hidden",
     theme: {
       copyPage: false,
