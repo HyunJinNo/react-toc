@@ -1,0 +1,27 @@
+---
+title: API
+---
+
+## TocProvider
+
+| Name                | Type                           | Default    |
+| ------------------- | ------------------------------ | ---------- |
+| `children`          | `React.ReactNode`              | Required\* |
+| `className?`        | `string`                       |            |
+| `maxDepth?`         | `number` <br /> Range: `1 - 5` | `5`        |
+| `observerOptions?`  | `IntersectionObserverInit`     |            |
+| `onActiveIdChange?` | `(id: string) => void`         |            |
+
+## Toc
+
+| Name                | Type              | Default      |
+| ------------------- | ----------------- | ------------ |
+| `className?`        | `string`          |              |
+| `headingClassName?` | `string`          |              |
+| `headingText?`      | `string`          | `"Contents"` |
+| `headingVisible?`   | `boolean`         | `true`       |
+| `listClassName?`    | `string`          |              |
+| `linkClassName?`    | `string`          |              |
+| `activeClassName?`  | `string`          |              |
+| `scrollToOptions?`  | `ScrollToOptions` |              |
+| `expandAll?`        | `boolean`         | `false`      |

@@ -6,11 +6,11 @@ import clsx from "clsx";
 interface TocProps {
   className?: string;
   headingClassName?: string;
+  headingText?: string;
+  headingVisible?: boolean;
   listClassName?: string;
   linkClassName?: string;
   activeClassName?: string;
-  headingText?: string;
-  headingVisible?: boolean;
   scrollToOptions?: ScrollToOptions;
   expandAll?: boolean;
 }
@@ -18,11 +18,11 @@ interface TocProps {
 export const Toc = ({
   className,
   headingClassName,
+  headingText = "Contents",
+  headingVisible = true,
   listClassName,
   linkClassName,
   activeClassName,
-  headingText,
-  headingVisible = true,
   scrollToOptions,
   expandAll = false,
 }: TocProps) => {
@@ -32,7 +32,7 @@ export const Toc = ({
     <section className={clsx("react-toc-wrapper", className)}>
       {headingVisible && (
         <h2 className={clsx("react-toc-wrapper-heading", headingClassName)}>
-          {headingText || "Contents"}
+          {headingText}
         </h2>
       )}
       <nav>
