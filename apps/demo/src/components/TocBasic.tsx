@@ -1,6 +1,6 @@
 "use client";
 
-import { H2, H3, H4, Toc, TocProvider } from "@hyunjinno/react-toc";
+import { H2, H3, H4, H5, H6, Toc, TocProvider } from "@hyunjinno/react-toc";
 
 export const TocBasic = () => {
   return (
@@ -15,10 +15,12 @@ export const TocBasic = () => {
           <H4>2.3.1. Heading</H4>
           <H4>2.3.2. Heading</H4>
           <H4>2.3.3. Heading</H4>
+          <H5>2.3.3.1. Heading</H5>
+          <H6>2.3.3.1.1. Heading</H6>
           <H3>2.4. Heading</H3>
           <H2>3. Heading</H2>
         </div>
-        <Toc tocClassName="w-32" />
+        <Toc className="w-40" />
       </div>
     </TocProvider>
   );

@@ -4,17 +4,21 @@ import { TocItem } from "./types";
 interface TocListProps {
   activeId: string;
   tocItem: TocItem;
-  itemClassName?: string;
+  listClassName?: string;
   linkClassName?: string;
   activeClassName?: string;
+  scrollToOptions?: ScrollToOptions;
+  expandAll?: boolean;
 }
 
 export const TocList = ({
   activeId,
   tocItem,
-  itemClassName,
+  listClassName,
   linkClassName,
   activeClassName,
+  scrollToOptions,
+  expandAll = false,
 }: TocListProps) => {
   const containsActive = (tocItem: TocItem): boolean => {
     if (activeId === tocItem.id) {
@@ -33,7 +37,7 @@ export const TocList = ({
   }[tocItem.tagName];
 
   return (
-    <li key={tocItem.id} className={clsx("react-toc-item", itemClassName)}>
+    <li key={tocItem.id} className={clsx("react-toc-list", listClassName)}>
       <a
         className={clsx(
           "react-toc-link",
@@ -52,6 +56,7 @@ export const TocList = ({
             window.scrollTo({
               top: element.offsetTop - 30,
               behavior: "smooth",
+              ...scrollToOptions,
             });
 
             window.history.pushState(null, "", `#${tocItem.id}`);
@@ -60,13 +65,23 @@ export const TocList = ({
       >
         {tocItem.textContent}
       </a>
-      {tocItem.children.length !== 0 && containsActive(tocItem) && (
-        <ul className="react-toc-list">
-          {tocItem.children.map((child) => (
-            <TocList key={child.id} activeId={activeId} tocItem={child} />
-          ))}
-        </ul>
-      )}
+      {tocItem.children.length !== 0 &&
+        (expandAll || containsActive(tocItem)) && (
+          <ul className={clsx("react-toc-list", listClassName)}>
+            {tocItem.children.map((child) => (
+              <TocList
+                key={child.id}
+                activeId={activeId}
+                tocItem={child}
+                listClassName={listClassName}
+                linkClassName={linkClassName}
+                activeClassName={activeClassName}
+                scrollToOptions={scrollToOptions}
+                expandAll={true}
+              />
+            ))}
+          </ul>
+        )}
     </li>
   );
 };

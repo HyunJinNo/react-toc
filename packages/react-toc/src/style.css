@@ -12,7 +12,6 @@
   font-weight: 500;
 }
 
-.react-toc-item,
 .react-toc-list {
   display: flex;
   flex-direction: column;

@@ -91,7 +91,31 @@ export const TocProvider = ({
             });
             observer.observe(element);
           }
-
+          break;
+        case "H6":
+          if (maxDepth >= 5) {
+            arr[arr.length - 1].children[
+              arr[arr.length - 1].children.length - 1
+            ].children[
+              arr[arr.length - 1].children[
+                arr[arr.length - 1].children.length - 1
+              ].children.length - 1
+            ].children[
+              arr[arr.length - 1].children[
+                arr[arr.length - 1].children.length - 1
+              ].children[
+                arr[arr.length - 1].children[
+                  arr[arr.length - 1].children.length - 1
+                ].children.length - 1
+              ].children.length - 1
+            ].children.push({
+              tagName: element.tagName,
+              textContent: element.textContent,
+              id: element.id,
+              children: [],
+            });
+            observer.observe(element);
+          }
           break;
         default:
           break;
