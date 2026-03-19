@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { DependencyList, useEffect, useRef, useState } from "react";
 import { TocItem } from "./types";
 import { TocContext } from "./TocContext";
 
@@ -7,6 +7,7 @@ interface TocProviderProps {
   className?: string;
   maxDepth?: 1 | 2 | 3 | 4 | 5;
   observerOptions?: IntersectionObserverInit;
+  deps?: DependencyList;
   onActiveIdChange?: (id: string) => void;
 }
 
@@ -15,6 +16,7 @@ export const TocProvider = ({
   className,
   maxDepth = 5,
   observerOptions,
+  deps,
   onActiveIdChange,
 }: TocProviderProps) => {
   const ref = useRef<HTMLDivElement>(null);
@@ -127,7 +129,7 @@ export const TocProvider = ({
     return () => {
       observer.disconnect();
     };
-  }, [maxDepth, observerOptions, onActiveIdChange]);
+  }, [maxDepth, observerOptions, onActiveIdChange, ...(deps ?? [])]);
 
   return (
     <TocContext value={{ activeId, tocItemList }}>
