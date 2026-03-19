@@ -1,12 +1,20 @@
+import clsx from "clsx";
 import { slugify } from "./slugify";
 
-type H3Props = React.ComponentProps<"h3"> & {
-  children: string;
-};
+type H3Props = Omit<
+  React.ComponentProps<"h3"> & {
+    children: string;
+  },
+  "id"
+>;
 
 export const H3 = ({ children, ...props }: H3Props) => {
   return (
-    <h3 className="toc-heading" id={slugify(children)} {...props}>
+    <h3
+      {...props}
+      className={clsx("toc-heading", props.className)}
+      id={slugify(children)}
+    >
       {children}
     </h3>
   );
