@@ -9,14 +9,14 @@ export const TocDepth = () => {
       maxDepth={2} // H2 ~ H3 only
     >
       <div className="flex flex-col gap-4">
-        <H2>1. Heading</H2>
-        <H2>2. Heading</H2>
-        <H3>2.1. Heading</H3>
-        <H4>2.1.1. Heading</H4>
-        <H5>2.1.1.1. Heading</H5>
-        <H6>2.1.1.1.1. Heading</H6>
-        <H3>2.2. Heading</H3>
-        <H2>3. Heading</H2>
+        <H2>b.1. Heading</H2>
+        <H2>b.2. Heading</H2>
+        <H3>b.2.1. Heading</H3>
+        <H4>b.2.1.1. Heading</H4>
+        <H5>b.2.1.1.1. Heading</H5>
+        <H6>b.2.1.1.1.1. Heading</H6>
+        <H3>b.2.2. Heading</H3>
+        <H2>b.3. Heading</H2>
       </div>
       <Toc className="w-44" expandAll={true} />
     </TocProvider>

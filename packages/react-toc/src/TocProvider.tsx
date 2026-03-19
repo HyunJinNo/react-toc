@@ -37,7 +37,7 @@ export const TocProvider = ({
           }
         });
       },
-      { rootMargin: "0px 0px -80% 0px", ...observerOptions },
+      { rootMargin: "-20% 0px -80% 0px", ...observerOptions },
     );
 
     const arr: TocItem[] = [];
