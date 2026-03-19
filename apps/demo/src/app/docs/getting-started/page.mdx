@@ -3,7 +3,10 @@ title: Getting Started
 ---
 
 import { TocBasic } from "@/components/TocBasic";
+import { TocDepth } from "@/components/TocDepth";
 import { Steps } from "nextra/components";
+
+# Getting Started
 
 ## Install
 
@@ -41,31 +44,33 @@ import "@hyunjinno/react-toc/style.css";
 
 ### Step 2.
 
-Introduce `TocProvider` and `Toc` components where they need to be used, basic usages:
+Wrap your content with `Toc Provider`.
+Use the provided heading components (`H2` ~ `H6`) inside a `Tow Provider`.
+Then place the `Toc` component wherever you want the table of contents to appear inside a `TocProvider`.
 
-```tsx copy
+```tsx copy filename="TocBasic.tsx"
 "use client";
 
-import { H2, H3, H4, Toc, TocProvider } from "@hyunjinno/react-toc";
+import { H2, H3, H4, H5, H6, Toc, TocProvider } from "@hyunjinno/react-toc";
 
 export const TocBasic = () => {
   return (
-    <TocProvider>
-      <div className="flex flex-row justify-between border p-4">
-        <div>
-          <H2>1. Heading</H2>
-          <H2>2. Heading</H2>
-          <H3>2.1. Heading</H3>
-          <H3>2.2. Heading</H3>
-          <H3>2.3. Heading</H3>
-          <H4>2.3.1. Heading</H4>
-          <H4>2.3.2. Heading</H4>
-          <H4>2.3.3. Heading</H4>
-          <H3>2.4. Heading</H3>
-          <H2>3. Heading</H2>
-        </div>
-        <Toc />
+    <TocProvider className="mt-5 flex flex-row justify-between p-4">
+      <div className="flex flex-col gap-4">
+        <H2>1. Heading</H2>
+        <H2>2. Heading</H2>
+        <H3>2.1. Heading</H3>
+        <H3>2.2. Heading</H3>
+        <H3>2.3. Heading</H3>
+        <H4>2.3.1. Heading</H4>
+        <H4>2.3.2. Heading</H4>
+        <H4>2.3.3. Heading</H4>
+        <H5>2.3.3.1. Heading</H5>
+        <H6>2.3.3.1.1. Heading</H6>
+        <H3>2.4. Heading</H3>
+        <H2>3. Heading</H2>
       </div>
+      <Toc className="w-44" />
     </TocProvider>
   );
 };
@@ -75,10 +80,69 @@ export const TocBasic = () => {
 
 <TocBasic />
 
+## Provided Heading Components
+
+The library exports the following components for each heading level:
+
+- `H2`
+- `H3`
+- `H4`
+- `H5`
+- `H6`
+
+All of them accept the same props as their native HTML counterparts
+(ex. `H2` accepts all props that a normal `<h2>` would).
+They automatically:
+
+- Add the class `toc-heading`.
+- Generate an `id` by slugifying the `children` text using a built-in `slugify` function (converts text to a URL-friendly string).
+
+```tsx copy
+import { H2 } from "@hyunjinno/react-toc";
+
+<H2 style={{ color: "blue" }}>My Section</H2>;
+// Renders: <h2 class="toc-heading" id="my-section" style="color: blue;">My Section</h2>
+```
+
+## Styling
+
+TODO
+
+## Limit depth
+
+Limit the TOC to only H2 and H3 headings:
+
+```tsx copy filename="TocDepth.tsx" {9,12-14,18-19}
+"use client";
+
+import { H2, H3, H4, H5, H6, Toc, TocProvider } from "@hyunjinno/react-toc";
+
+export const TocDepth = () => {
+  return (
+    <TocProvider
+      className="mt-5 flex flex-row justify-between p-4"
+      maxDepth={2} // H2 ~ H3 only
+    >
+      <div className="flex flex-col gap-4">
+        <H2>1. Heading</H2>
+        <H2>2. Heading</H2>
+        <H3>2.1. Heading</H3>
+        <H4>2.1.1. Heading</H4>
+        <H5>2.1.1.1. Heading</H5>
+        <H6>2.1.1.1.1. Heading</H6>
+        <H3>2.2. Heading</H3>
+        <H2>3. Heading</H2>
+      </div>
+      <Toc className="w-44" expandAll={true} />
+    </TocProvider>
+  );
+};
+```
+
+<TocDepth />
+
+## Custom IntersectionObserver options
+
+Adjust the
+
 ## ScrollSpy
-
-### TODO
-
-## Toc
-
-## TocProvider

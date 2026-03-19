@@ -1,0 +1,14 @@
+---
+title: headings
+---
+
+# \<H2> ~ \<H6>
+
+The library exports six heading components: `H2`, `H3`, `H4`, `H5`, and `H6`.
+They are designed to work seamlessly with TocProvider
+by automatically adding the required toc-heading class and a unique id based on their content.
+
+| Prop       | Type     | Default  | Description                                                                                                    |
+| ---------- | -------- | -------- | -------------------------------------------------------------------------------------------------------------- |
+| `children` | `string` | required | The text content of the heading. This string is used to generate an `id` via the built-in `slugify` function.  |
+| ...props   | -        | -        | All other props (ex. style, onClick, data-\* attributes) are passed through to the underlying heading element. |

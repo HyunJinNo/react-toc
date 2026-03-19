@@ -20,7 +20,18 @@ const config = {
         title: "Getting Started",
       },
       api: {
-        title: "API",
+        title: "API Reference",
+        items: {
+          "toc-provider": {
+            title: "<TocProvider>",
+          },
+          toc: {
+            title: "<Toc>",
+          },
+          headings: {
+            title: "<H2> ~ <H6>",
+          },
+        },
       },
     },
   },
