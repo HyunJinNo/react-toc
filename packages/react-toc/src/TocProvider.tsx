@@ -8,7 +8,7 @@ interface TocProviderProps {
   maxDepth?: 1 | 2 | 3 | 4 | 5;
   observerOptions?: IntersectionObserverInit;
   deps?: DependencyList;
-  onActiveIdChange?: (id: string) => void;
+  onActiveIdChange?: (id: string, textContent: string) => void;
 }
 
 export const TocProvider = ({
@@ -33,7 +33,7 @@ export const TocProvider = ({
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             setActiveId(entry.target.id);
-            onActiveIdChange?.(entry.target.id);
+            onActiveIdChange?.(entry.target.id, entry.target.textContent);
           }
         });
       },

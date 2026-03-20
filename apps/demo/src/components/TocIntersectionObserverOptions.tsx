@@ -5,7 +5,7 @@ import { H2, Toc, TocProvider } from "@hyunjinno/react-toc";
 export const TocIntersectionObserverOptions = () => {
   return (
     <TocProvider
-      className="mt-5 flex flex-row justify-between p-4"
+      className="mt-5 flex flex-row justify-between rounded-lg border border-gray-100 p-4 shadow"
       observerOptions={{ rootMargin: "-50% 0px -50% 0px" }}
     >
       <div className="flex flex-col gap-4">

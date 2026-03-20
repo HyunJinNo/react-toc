@@ -6,11 +6,11 @@ title: TocProvider
 
 Provider component that scans its children for headings, builds the TOC tree, and tracks the active heading via an `Intersection Observer`.
 
-| Prop                | Type                       | Default                               | Description                                                                                      |
-| ------------------- | -------------------------- | ------------------------------------- | ------------------------------------------------------------------------------------------------ |
-| `children`          | `React.ReactNode`          | required                              | Your content containing heading.                                                                 |
-| `className?`        | `string`                   | -                                     | CSS class for the wrapper `<div>`.                                                               |
-| `maxDepth?`         | `1 \| 2 \| 3 \| 4 \| 5`    | `5`                                   | Maximum heading level to include (`1` = only H2, `2` = H2 ~ H3, etc.).                           |
-| `observerOptions?`  | `IntersectionObserverInit` | `{ rootMargin: "-20% 0px -80% 0px" }` | Options passed to the `IntersectionObserver` used for active detection.                          |
-| `deps?`             | `DependencyList`           | -                                     | Additional dependencies that will cause the TOC to be rebuilt (like the `useEffect` deps array). |
-| `onActiveIdChange?` | `(id: string) => void`     | -                                     | Callback fired when the active heading changes.                                                  |
+| Prop                | Type                                        | Default                               | Description                                                                                      |
+| ------------------- | ------------------------------------------- | ------------------------------------- | ------------------------------------------------------------------------------------------------ |
+| `children`          | `React.ReactNode`                           | required                              | Your content containing heading.                                                                 |
+| `className?`        | `string`                                    | -                                     | CSS class for the wrapper `<div>`.                                                               |
+| `maxDepth?`         | `1 \| 2 \| 3 \| 4 \| 5`                     | `5`                                   | Maximum heading level to include (`1` = only H2, `2` = H2 ~ H3, etc.).                           |
+| `observerOptions?`  | `IntersectionObserverInit`                  | `{ rootMargin: "-20% 0px -80% 0px" }` | Options passed to the `IntersectionObserver` used for active detection.                          |
+| `deps?`             | `DependencyList`                            | -                                     | Additional dependencies that will cause the TOC to be rebuilt (like the `useEffect` deps array). |
+| `onActiveIdChange?` | `(id: string, textContent: string) => void` | -                                     | Callback fired when the active heading changes.                                                  |

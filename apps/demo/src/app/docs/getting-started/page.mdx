@@ -4,8 +4,10 @@ title: Getting Started
 
 import { Steps } from "nextra/components";
 import { TocBasic } from "@/components/TocBasic";
-import { TocDepth } from "@/components/TocDepth";
+import { TocMaxDepth } from "@/components/TocMaxDepth";
 import { TocIntersectionObserverOptions } from "@/components/TocIntersectionObserverOptions";
+import { TocDeps } from "@/components/TocDeps";
+import { TocOnActiveIdChange } from "@/components/TocOnActiveIdChange";
 
 # Getting Started
 
@@ -56,7 +58,7 @@ import { H2, H3, H4, H5, H6, Toc, TocProvider } from "@hyunjinno/react-toc";
 
 export const TocBasic = () => {
   return (
-    <TocProvider className="mt-5 flex flex-row justify-between p-4">
+    <TocProvider className="mt-5 flex flex-row justify-between rounded-lg border border-gray-100 p-4 shadow">
       <div className="flex flex-col gap-4">
         <H2>a.1. Heading</H2>
         <H2>a.2. Heading</H2>
@@ -115,15 +117,15 @@ TODO
 
 Limit the TOC to only H2 and H3 headings:
 
-```tsx copy filename="TocDepth.tsx" {9,12-14,18-19}
+```tsx copy filename="TocMaxDepth.tsx" {9,12-14,18-19}
 "use client";
 
 import { H2, H3, H4, H5, H6, Toc, TocProvider } from "@hyunjinno/react-toc";
 
-export const TocDepth = () => {
+export const TocMaxDepth = () => {
   return (
     <TocProvider
-      className="mt-5 flex flex-row justify-between p-4"
+      className="mt-5 flex flex-row justify-between rounded-lg border border-gray-100 p-4 shadow"
       maxDepth={2} // H2 ~ H3 only
     >
       <div className="flex flex-col gap-4">
@@ -142,7 +144,7 @@ export const TocDepth = () => {
 };
 ```
 
-<TocDepth />
+<TocMaxDepth />
 
 ### Custom IntersectionObserver options
 
@@ -157,7 +159,7 @@ import { H2, Toc, TocProvider } from "@hyunjinno/react-toc";
 export const TocIntersectionObserverOptions = () => {
   return (
     <TocProvider
-      className="mt-5 flex flex-row justify-between p-4"
+      className="mt-5 flex flex-row justify-between rounded-lg border border-gray-100 p-4 shadow"
       observerOptions={{ rootMargin: "-50% 0px -50% 0px" }}
     >
       <div className="flex flex-col gap-4">
@@ -178,13 +180,102 @@ export const TocIntersectionObserverOptions = () => {
 ### deps
 
 If your content changes after mount, you need to trigger a rebuild of the TOC.
-Pass a dependency array via the `depts` prop:
+Pass a dependency array via the `deps` prop:
 
-```tsx copy filename="TocDeps.tsx"
-TODO;
+```tsx copy filename="TocDeps.tsx" {7-13,18}
+"use client";
+
+import { H2, Toc, TocProvider } from "@hyunjinno/react-toc";
+import { useState } from "react";
+
+export const TocDeps = () => {
+  const [headingList, setHeadingList] = useState<string[]>([]);
+  const [count, setCount] = useState(0);
+
+  const handleClick = () => {
+    setHeadingList([...headingList, crypto.randomUUID()]);
+    setCount(count + 1);
+  };
+
+  return (
+    <TocProvider
+      className="mt-5 flex flex-row justify-between rounded-lg border border-gray-100 p-4 shadow"
+      deps={[count]}
+    >
+      <div className="flex flex-col gap-4">
+        {headingList.map((value) => (
+          <H2 key={value}>{value}</H2>
+        ))}
+        <button
+          className="h-10 w-10 cursor-pointer rounded-full border border-gray-200 bg-white p-1 shadow hover:scale-105"
+          onClick={handleClick}
+        >
+          +
+        </button>
+      </div>
+      <Toc className="w-44" />
+    </TocProvider>
+  );
+};
 ```
 
+<TocDeps />
+
 ### onActiveIdChange
+
+React to active heading changes, e.g., for analytics:
+
+```tsx copy filename="TocOnActiveIdChange.tsx" {7-13, 19, 21-27}
+"use client";
+
+import { H2, H3, H4, H5, H6, Toc, TocProvider } from "@hyunjinno/react-toc";
+import { useState } from "react";
+
+export const TocOnActiveIdChange = () => {
+  const [activeId, setActiveId] = useState("");
+  const [activeHeadingContent, setActiveHeadingContent] = useState("");
+
+  const handleActiveIdChange = (id: string, textContent: string) => {
+    setActiveId(id);
+    setActiveHeadingContent(textContent);
+  };
+
+  return (
+    <TocProvider
+      className="mt-5 flex flex-col rounded-lg border border-gray-100 p-4 shadow"
+      observerOptions={{ rootMargin: "-80% 0px -20% 0px" }}
+      onActiveIdChange={handleActiveIdChange}
+    >
+      <p>
+        Active ID: <span className="text-blue-500">{activeId}</span>
+      </p>
+      <p>
+        Active Heading Content:{" "}
+        <span className="text-blue-500">{activeHeadingContent}</span>
+      </p>
+      <div className="mt-5 flex flex-row justify-between">
+        <div className="flex flex-col gap-4">
+          <H2>d.1. Heading</H2>
+          <H2>d.2. Heading</H2>
+          <H3>d.2.1. Heading</H3>
+          <H3>d.2.2. Heading</H3>
+          <H3>d.2.3. Heading</H3>
+          <H4>d.2.3.1. Heading</H4>
+          <H4>d.2.3.2. Heading</H4>
+          <H4>d.2.3.3. Heading</H4>
+          <H5>d.2.3.3.1. Heading</H5>
+          <H6>d.2.3.3.1.1. Heading</H6>
+          <H3>d.2.4. Heading</H3>
+          <H2>d.3. Heading</H2>
+        </div>
+        <Toc className="w-44" />
+      </div>
+    </TocProvider>
+  );
+};
+```
+
+<TocOnActiveIdChange />
 
 ## Toc
 

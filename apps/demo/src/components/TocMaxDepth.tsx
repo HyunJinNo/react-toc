@@ -2,10 +2,10 @@
 
 import { H2, H3, H4, H5, H6, Toc, TocProvider } from "@hyunjinno/react-toc";
 
-export const TocDepth = () => {
+export const TocMaxDepth = () => {
   return (
     <TocProvider
-      className="mt-5 flex flex-row justify-between p-4"
+      className="mt-5 flex flex-row justify-between rounded-lg border border-gray-100 p-4 shadow"
       maxDepth={2} // H2 ~ H3 only
     >
       <div className="flex flex-col gap-4">
