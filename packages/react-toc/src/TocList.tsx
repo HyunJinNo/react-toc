@@ -77,7 +77,7 @@ export const TocList = ({
                 linkClassName={linkClassName}
                 activeClassName={activeClassName}
                 scrollToOptions={scrollToOptions}
-                expandAll={true}
+                expandAll={expandAll}
               />
             ))}
           </ul>

@@ -18,7 +18,7 @@ export const TocMaxDepth = () => {
         <H3>b.2.2. Heading</H3>
         <H2>b.3. Heading</H2>
       </div>
-      <Toc className="w-44" expandAll={true} />
+      <Toc className="w-44" />
     </TocProvider>
   );
 };
