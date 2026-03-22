@@ -8,6 +8,9 @@ import { TocMaxDepth } from "@/components/TocMaxDepth";
 import { TocIntersectionObserverOptions } from "@/components/TocIntersectionObserverOptions";
 import { TocDeps } from "@/components/TocDeps";
 import { TocOnActiveIdChange } from "@/components/TocOnActiveIdChange";
+import { TocHeadingText } from "@/components/TocHeadingText";
+import { TocHeadingVisible } from "@/components/TocHeadingVisible";
+import { TocScrollToOptions } from "@/components/TocScrollToOptions";
 import { TocExpandAll } from "@/components/TocExpandAll";
 
 # Getting Started
@@ -147,7 +150,7 @@ export const TocMaxDepth = () => {
 
 <TocMaxDepth />
 
-### Custom IntersectionObserver options
+### observerOptions
 
 `TocProvider` tracks the active heading via an `Intersection Observer`.
 You can customize intersection observer options:
@@ -280,19 +283,93 @@ export const TocOnActiveIdChange = () => {
 
 ## Toc
 
-### heading
+### headingText
 
-```tsx copy filename="TocHeading.tsx"
+You can change TOC title:
 
+```tsx copy filename="TocHeadingText.tsx" {18}
+"use client";
+
+import { H2, Toc, TocProvider } from "@hyunjinno/react-toc";
+
+export const TocHeadingText = () => {
+  return (
+    <TocProvider className="mt-5 flex flex-row justify-between rounded-lg border border-gray-100 p-4 shadow">
+      <div className="flex flex-col gap-4">
+        <H2>e.1. Heading</H2>
+        <H2>e.2. Heading</H2>
+        <H2>e.3. Heading</H2>
+        <H2>e.4. Heading</H2>
+        <H2>e.5. Heading</H2>
+      </div>
+      <Toc
+        className="w-44"
+        headingClassName="text-blue-500"
+        headingText="On This Page"
+      />
+    </TocProvider>
+  );
+};
 ```
 
-### scrollToOptions
+<TocHeadingText />
 
-You can reuse the scrolling
+### headingVisible
 
-```tsx copy filename="TocScrollToOptions.tsx"
+The TOC title can be hidden:
 
+```tsx copy filename="TocHeadingVisible.tsx" {15}
+"use client";
+
+import { H2, Toc, TocProvider } from "@hyunjinno/react-toc";
+
+export const TocHeadingVisible = () => {
+  return (
+    <TocProvider className="mt-5 flex flex-row justify-between rounded-lg border border-gray-100 p-4 shadow">
+      <div className="flex flex-col gap-4">
+        <H2>f.1. Heading</H2>
+        <H2>f.2. Heading</H2>
+        <H2>f.3. Heading</H2>
+        <H2>f.4. Heading</H2>
+        <H2>f.5. Heading</H2>
+      </div>
+      <Toc className="w-44" headingVisible={false} />
+    </TocProvider>
+  );
+};
 ```
+
+<TocHeadingVisible />
+
+### Custom ScrollToOptions
+
+```tsx copy filename="TocScrollToOptions.tsx" {17-19}
+"use client";
+
+import { H2, Toc, TocProvider } from "@hyunjinno/react-toc";
+
+export const TocScrollToOptions = () => {
+  return (
+    <TocProvider className="mt-5 flex flex-row justify-between rounded-lg border border-gray-100 p-4 shadow">
+      <div className="flex flex-col gap-4">
+        <H2>g.1. Heading</H2>
+        <H2>g.2. Heading</H2>
+        <H2>g.3. Heading</H2>
+        <H2>g.4. Heading</H2>
+        <H2>g.5. Heading</H2>
+      </div>
+      <Toc
+        className="w-44"
+        offsetTop={100}
+        offsetLeft={0}
+        scrollBehavior="instant"
+      />
+    </TocProvider>
+  );
+};
+```
+
+<TocScrollToOptions />
 
 ### expandAll
 
@@ -308,18 +385,18 @@ export const TocExpandAll = () => {
   return (
     <TocProvider className="mt-5 flex flex-row justify-between rounded-lg border border-gray-100 p-4 shadow">
       <div className="flex flex-col gap-4">
-        <H2>g.1. Heading</H2>
-        <H2>g.2. Heading</H2>
-        <H3>g.2.1. Heading</H3>
-        <H3>g.2.2. Heading</H3>
-        <H3>g.2.3. Heading</H3>
-        <H4>g.2.3.1. Heading</H4>
-        <H4>g.2.3.2. Heading</H4>
-        <H4>g.2.3.3. Heading</H4>
-        <H5>g.2.3.3.1. Heading</H5>
-        <H6>g.2.3.3.1.1. Heading</H6>
-        <H3>g.2.4. Heading</H3>
-        <H2>g.3. Heading</H2>
+        <H2>h.1. Heading</H2>
+        <H2>h.2. Heading</H2>
+        <H3>h.2.1. Heading</H3>
+        <H3>h.2.2. Heading</H3>
+        <H3>h.2.3. Heading</H3>
+        <H4>h.2.3.1. Heading</H4>
+        <H4>h.2.3.2. Heading</H4>
+        <H4>h.2.3.3. Heading</H4>
+        <H5>h.2.3.3.1. Heading</H5>
+        <H6>h.2.3.3.1.1. Heading</H6>
+        <H3>h.2.4. Heading</H3>
+        <H2>h.3. Heading</H2>
       </div>
       <Toc className="w-44" expandAll={true} />
     </TocProvider>

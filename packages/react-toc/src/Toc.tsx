@@ -11,7 +11,9 @@ interface TocProps {
   listClassName?: string;
   linkClassName?: string;
   activeClassName?: string;
-  scrollToOptions?: ScrollToOptions;
+  offsetTop?: number;
+  offsetLeft?: number;
+  scrollBehavior?: ScrollBehavior;
   expandAll?: boolean;
 }
 
@@ -23,7 +25,9 @@ export const Toc = ({
   listClassName,
   linkClassName,
   activeClassName,
-  scrollToOptions,
+  offsetTop = 30,
+  offsetLeft,
+  scrollBehavior = "smooth",
   expandAll = false,
 }: TocProps) => {
   const { activeId, tocItemList } = useContext(TocContext);
@@ -45,7 +49,9 @@ export const Toc = ({
               listClassName={listClassName}
               linkClassName={linkClassName}
               activeClassName={activeClassName}
-              scrollToOptions={scrollToOptions}
+              offsetTop={offsetTop}
+              offsetLeft={offsetLeft}
+              scrollBehavior={scrollBehavior}
               expandAll={expandAll}
             />
           ))}

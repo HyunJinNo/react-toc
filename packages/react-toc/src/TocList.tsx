@@ -7,7 +7,9 @@ interface TocListProps {
   listClassName?: string;
   linkClassName?: string;
   activeClassName?: string;
-  scrollToOptions?: ScrollToOptions;
+  offsetTop?: number;
+  offsetLeft?: number;
+  scrollBehavior?: ScrollBehavior;
   expandAll?: boolean;
 }
 
@@ -17,7 +19,9 @@ export const TocList = ({
   listClassName,
   linkClassName,
   activeClassName,
-  scrollToOptions,
+  offsetTop,
+  offsetLeft,
+  scrollBehavior,
   expandAll = false,
 }: TocListProps) => {
   const containsActive = (tocItem: TocItem): boolean => {
@@ -54,9 +58,9 @@ export const TocList = ({
           if (element) {
             // 요소의 위치를 얻어서 위로 스크롤 조정
             window.scrollTo({
-              top: element.offsetTop - 30,
-              behavior: "smooth",
-              ...scrollToOptions,
+              top: element.offsetTop - (offsetTop ?? 0),
+              left: offsetLeft,
+              behavior: scrollBehavior,
             });
 
             window.history.pushState(null, "", `#${tocItem.id}`);
@@ -76,7 +80,9 @@ export const TocList = ({
                 listClassName={listClassName}
                 linkClassName={linkClassName}
                 activeClassName={activeClassName}
-                scrollToOptions={scrollToOptions}
+                offsetTop={offsetTop}
+                offsetLeft={offsetLeft}
+                scrollBehavior={scrollBehavior}
                 expandAll={expandAll}
               />
             ))}
