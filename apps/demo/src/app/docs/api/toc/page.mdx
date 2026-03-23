@@ -6,14 +6,16 @@ title: Toc
 
 Component that renders the table of contents based on the data from `TocProvider`. Must be used inside a `TocProvider`.
 
-| Prop                | Type              | Default                                               | Description                                                                                                 |
-| ------------------- | ----------------- | ----------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- |
-| `className?`        | `string`          | -                                                     | CSS class for the outer `<section>` element.                                                                |
-| `headingClassName?` | `string`          | -                                                     | CSS class for the optional heading (ex. "Contents").                                                        |
-| `headingText?`      | `string`          | `"Contents"`                                          | Text for the optional heading.                                                                              |
-| `headingVisible?`   | `boolean`         | `true`                                                | Where to show the heading above the TOC.                                                                    |
-| `listClassName?`    | `string`          | -                                                     | CSS class for all `<ul>` elements in the TOC.                                                               |
-| `linkClassName?`    | `string`          | -                                                     | CSS class for all `<a>` links.                                                                              |
-| `activeClassName?`  | `string`          | -                                                     | Additional CSS class applied to the active link.                                                            |
-| `scrollToOptions?`  | `ScrollToOptions` | `{ top: element.offsetTop - 30, behavior: "smooth" }` | Options passed to `window.scrollTo` when a link is clicked.                                                 |
-| `expandAll?`        | `boolean`         | `false`                                               | If `true`, always show all nested levels. If `false`, only expand the branch containing the active heading. |
+| Prop                | Type                              | Default      | Description                                                                                                 |
+| ------------------- | --------------------------------- | ------------ | ----------------------------------------------------------------------------------------------------------- |
+| `className?`        | `string`                          | -            | CSS class for the outer `<section>` element.                                                                |
+| `headingClassName?` | `string`                          | -            | CSS class for the optional heading (ex. "Contents").                                                        |
+| `headingText?`      | `string`                          | `"Contents"` | Text for the optional heading.                                                                              |
+| `headingVisible?`   | `boolean`                         | `true`       | Where to show the heading above the TOC.                                                                    |
+| `listClassName?`    | `string`                          | -            | CSS class for all `<ul>` elements in the TOC.                                                               |
+| `linkClassName?`    | `string`                          | -            | CSS class for all `<a>` links.                                                                              |
+| `activeClassName?`  | `string`                          | -            | Additional CSS class applied to the active link.                                                            |
+| `offsetTop?`        | `number`                          | 30           | Vertical offset applied when scrolling to a heading.                                                        |
+| `offsetLeft?`       | `number`                          | 0            | Horizontal scroll offset when navigating to a heading.                                                      |
+| `scrollBehavior?`   | `"auto" \| "instant" \| "smooth"` | `"smooth"`   | Determines whether scrolling is instant or animates smoothly.                                               |
+| `expandAll?`        | `boolean`                         | `false`      | If `true`, always show all nested levels. If `false`, only expand the branch containing the active heading. |
