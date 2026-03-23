@@ -2,6 +2,7 @@
 title: Getting Started
 ---
 
+import { Callout } from "nextra/components";
 import { Steps } from "nextra/components";
 import { TocBasic } from "@/components/TocBasic";
 import { TocCSS } from "@/components/TocCSS";
@@ -114,12 +115,15 @@ import { H2 } from "@hyunjinno/react-toc";
 
 ## Styling
 
-The library is built with minimal default styling,
-giving you full control over its appearance.
-It provides a set of semantic CSS classes that you can target,
-as well as props to pass your own class names.
+The library provides minimal default styling,
+allowing you to fully customize its appearance.
 
-### Passing CSS classes to component
+You can style the TOC in two ways:
+
+1. Passing class names via props
+2. Overriding the default CSS classes
+
+### Customizing with Props
 
 `Toc` component accepts the following props for styling:
 
@@ -160,9 +164,18 @@ export const TocCSS = () => {
 
 <TocCSS />
 
-### Override existing CSS classes
+### Overriding Default Styles
 
-TODO
+The library includes predefined CSS class names that you can override.
+
+| Class                             | Description                   |
+| --------------------------------- | ----------------------------- |
+| `.react-toc-wrapper`              | Root container of the TOC     |
+| `.react-toc-wrapper-heading`      | TOC title (ex. "Contents")    |
+| `.react-toc-list`                 | `<ul>` list container         |
+| `.react-toc-link`                 | Each TOC link                 |
+| `.react-toc-active`               | Active TOC link               |
+| `.react-toc-h2` ~ `.react-toc-h6` | Indentation per heading level |
 
 ```css copy filename="style.css"
 .react-toc-wrapper {
@@ -222,6 +235,35 @@ TODO
 }
 ```
 
+You can override them by writing your own styles targeting these class names.
+
+<Callout type="important">
+  Make sure your CSS is loaded after the library's styles.
+</Callout>
+
+```css copy filename="my-style.css"
+.react-toc-link {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+
+  &:hover {
+    color: #00ff00;
+  }
+}
+
+.react-toc-active {
+  border-left: 1px solid #00ff00;
+  color: #00ff00;
+  margin-left: -1px;
+}
+```
+
+```tsx copy
+import "@hyunjinno/react-toc/style.css";
+import "my-style.css";
+```
+
 ## TocProvider
 
 ### maxDepth
@@ -240,14 +282,14 @@ export const TocMaxDepth = () => {
       maxDepth={2} // H2 ~ H3 only
     >
       <div className="flex flex-col gap-4">
-        <H2>b.1. Heading</H2>
-        <H2>b.2. Heading</H2>
-        <H3>b.2.1. Heading</H3>
-        <H4>b.2.1.1. Heading</H4>
-        <H5>b.2.1.1.1. Heading</H5>
-        <H6>b.2.1.1.1.1. Heading</H6>
-        <H3>b.2.2. Heading</H3>
-        <H2>b.3. Heading</H2>
+        <H2>c.1. Heading</H2>
+        <H2>c.2. Heading</H2>
+        <H3>c.2.1. Heading</H3>
+        <H4>c.2.1.1. Heading</H4>
+        <H5>c.2.1.1.1. Heading</H5>
+        <H6>c.2.1.1.1.1. Heading</H6>
+        <H3>c.2.2. Heading</H3>
+        <H2>c.3. Heading</H2>
       </div>
       <Toc className="w-44" />
     </TocProvider>
@@ -274,11 +316,11 @@ export const TocIntersectionObserverOptions = () => {
       observerOptions={{ rootMargin: "-50% 0px -50% 0px" }}
     >
       <div className="flex flex-col gap-4">
-        <H2>c.1. Heading</H2>
-        <H2>c.2. Heading</H2>
-        <H2>c.3. Heading</H2>
-        <H2>c.4. Heading</H2>
-        <H2>c.5. Heading</H2>
+        <H2>d.1. Heading</H2>
+        <H2>d.2. Heading</H2>
+        <H2>d.3. Heading</H2>
+        <H2>d.4. Heading</H2>
+        <H2>d.5. Heading</H2>
       </div>
       <Toc className="w-44" />
     </TocProvider>
@@ -366,18 +408,18 @@ export const TocOnActiveIdChange = () => {
       </p>
       <div className="mt-5 flex flex-row justify-between">
         <div className="flex flex-col gap-4">
-          <H2>d.1. Heading</H2>
-          <H2>d.2. Heading</H2>
-          <H3>d.2.1. Heading</H3>
-          <H3>d.2.2. Heading</H3>
-          <H3>d.2.3. Heading</H3>
-          <H4>d.2.3.1. Heading</H4>
-          <H4>d.2.3.2. Heading</H4>
-          <H4>d.2.3.3. Heading</H4>
-          <H5>d.2.3.3.1. Heading</H5>
-          <H6>d.2.3.3.1.1. Heading</H6>
-          <H3>d.2.4. Heading</H3>
-          <H2>d.3. Heading</H2>
+          <H2>e.1. Heading</H2>
+          <H2>e.2. Heading</H2>
+          <H3>e.2.1. Heading</H3>
+          <H3>e.2.2. Heading</H3>
+          <H3>e.2.3. Heading</H3>
+          <H4>e.2.3.1. Heading</H4>
+          <H4>e.2.3.2. Heading</H4>
+          <H4>e.2.3.3. Heading</H4>
+          <H5>e.2.3.3.1. Heading</H5>
+          <H6>e.2.3.3.1.1. Heading</H6>
+          <H3>e.2.4. Heading</H3>
+          <H2>e.3. Heading</H2>
         </div>
         <Toc className="w-44" />
       </div>
@@ -403,11 +445,11 @@ export const TocHeadingText = () => {
   return (
     <TocProvider className="mt-5 flex flex-row justify-between rounded-lg border border-gray-100 p-4 shadow">
       <div className="flex flex-col gap-4">
-        <H2>e.1. Heading</H2>
-        <H2>e.2. Heading</H2>
-        <H2>e.3. Heading</H2>
-        <H2>e.4. Heading</H2>
-        <H2>e.5. Heading</H2>
+        <H2>f.1. Heading</H2>
+        <H2>f.2. Heading</H2>
+        <H2>f.3. Heading</H2>
+        <H2>f.4. Heading</H2>
+        <H2>f.5. Heading</H2>
       </div>
       <Toc
         className="w-44"
@@ -434,11 +476,11 @@ export const TocHeadingVisible = () => {
   return (
     <TocProvider className="mt-5 flex flex-row justify-between rounded-lg border border-gray-100 p-4 shadow">
       <div className="flex flex-col gap-4">
-        <H2>f.1. Heading</H2>
-        <H2>f.2. Heading</H2>
-        <H2>f.3. Heading</H2>
-        <H2>f.4. Heading</H2>
-        <H2>f.5. Heading</H2>
+        <H2>g.1. Heading</H2>
+        <H2>g.2. Heading</H2>
+        <H2>g.3. Heading</H2>
+        <H2>g.4. Heading</H2>
+        <H2>g.5. Heading</H2>
       </div>
       <Toc className="w-44" headingVisible={false} />
     </TocProvider>
@@ -461,11 +503,11 @@ export const TocScrollToOptions = () => {
   return (
     <TocProvider className="mt-5 flex flex-row justify-between rounded-lg border border-gray-100 p-4 shadow">
       <div className="flex flex-col gap-4">
-        <H2>g.1. Heading</H2>
-        <H2>g.2. Heading</H2>
-        <H2>g.3. Heading</H2>
-        <H2>g.4. Heading</H2>
-        <H2>g.5. Heading</H2>
+        <H2>h.1. Heading</H2>
+        <H2>h.2. Heading</H2>
+        <H2>h.3. Heading</H2>
+        <H2>h.4. Heading</H2>
+        <H2>h.5. Heading</H2>
       </div>
       <Toc
         className="w-44"
@@ -494,18 +536,18 @@ export const TocExpandAll = () => {
   return (
     <TocProvider className="mt-5 flex flex-row justify-between rounded-lg border border-gray-100 p-4 shadow">
       <div className="flex flex-col gap-4">
-        <H2>h.1. Heading</H2>
-        <H2>h.2. Heading</H2>
-        <H3>h.2.1. Heading</H3>
-        <H3>h.2.2. Heading</H3>
-        <H3>h.2.3. Heading</H3>
-        <H4>h.2.3.1. Heading</H4>
-        <H4>h.2.3.2. Heading</H4>
-        <H4>h.2.3.3. Heading</H4>
-        <H5>h.2.3.3.1. Heading</H5>
-        <H6>h.2.3.3.1.1. Heading</H6>
-        <H3>h.2.4. Heading</H3>
-        <H2>h.3. Heading</H2>
+        <H2>i.1. Heading</H2>
+        <H2>i.2. Heading</H2>
+        <H3>i.2.1. Heading</H3>
+        <H3>i.2.2. Heading</H3>
+        <H3>i.2.3. Heading</H3>
+        <H4>i.2.3.1. Heading</H4>
+        <H4>i.2.3.2. Heading</H4>
+        <H4>i.2.3.3. Heading</H4>
+        <H5>i.2.3.3.1. Heading</H5>
+        <H6>i.2.3.3.1.1. Heading</H6>
+        <H3>i.2.4. Heading</H3>
+        <H2>i.3. Heading</H2>
       </div>
       <Toc className="w-44" expandAll={true} />
     </TocProvider>
@@ -514,7 +556,3 @@ export const TocExpandAll = () => {
 ```
 
 <TocExpandAll />
-
-## Using in Next.js Project
-
-TODO

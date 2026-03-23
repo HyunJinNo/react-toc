@@ -27,18 +27,18 @@ export const TocOnActiveIdChange = () => {
       </p>
       <div className="mt-5 flex flex-row justify-between">
         <div className="flex flex-col gap-4">
-          <H2>d.1. Heading</H2>
-          <H2>d.2. Heading</H2>
-          <H3>d.2.1. Heading</H3>
-          <H3>d.2.2. Heading</H3>
-          <H3>d.2.3. Heading</H3>
-          <H4>d.2.3.1. Heading</H4>
-          <H4>d.2.3.2. Heading</H4>
-          <H4>d.2.3.3. Heading</H4>
-          <H5>d.2.3.3.1. Heading</H5>
-          <H6>d.2.3.3.1.1. Heading</H6>
-          <H3>d.2.4. Heading</H3>
-          <H2>d.3. Heading</H2>
+          <H2>e.1. Heading</H2>
+          <H2>e.2. Heading</H2>
+          <H3>e.2.1. Heading</H3>
+          <H3>e.2.2. Heading</H3>
+          <H3>e.2.3. Heading</H3>
+          <H4>e.2.3.1. Heading</H4>
+          <H4>e.2.3.2. Heading</H4>
+          <H4>e.2.3.3. Heading</H4>
+          <H5>e.2.3.3.1. Heading</H5>
+          <H6>e.2.3.3.1.1. Heading</H6>
+          <H3>e.2.4. Heading</H3>
+          <H2>e.3. Heading</H2>
         </div>
         <Toc className="w-44" />
       </div>

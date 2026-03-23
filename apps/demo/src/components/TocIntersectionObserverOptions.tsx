@@ -9,11 +9,11 @@ export const TocIntersectionObserverOptions = () => {
       observerOptions={{ rootMargin: "-50% 0px -50% 0px" }}
     >
       <div className="flex flex-col gap-4">
-        <H2>c.1. Heading</H2>
-        <H2>c.2. Heading</H2>
-        <H2>c.3. Heading</H2>
-        <H2>c.4. Heading</H2>
-        <H2>c.5. Heading</H2>
+        <H2>d.1. Heading</H2>
+        <H2>d.2. Heading</H2>
+        <H2>d.3. Heading</H2>
+        <H2>d.4. Heading</H2>
+        <H2>d.5. Heading</H2>
       </div>
       <Toc className="w-44" />
     </TocProvider>
