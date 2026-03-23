@@ -26,7 +26,7 @@ export const Toc = ({
   linkClassName,
   activeClassName,
   offsetTop = 30,
-  offsetLeft,
+  offsetLeft = 0,
   scrollBehavior = "smooth",
   expandAll = false,
 }: TocProps) => {

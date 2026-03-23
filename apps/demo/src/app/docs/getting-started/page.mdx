@@ -4,6 +4,7 @@ title: Getting Started
 
 import { Steps } from "nextra/components";
 import { TocBasic } from "@/components/TocBasic";
+import { TocCSS } from "@/components/TocCSS";
 import { TocMaxDepth } from "@/components/TocMaxDepth";
 import { TocIntersectionObserverOptions } from "@/components/TocIntersectionObserverOptions";
 import { TocDeps } from "@/components/TocDeps";
@@ -113,7 +114,113 @@ import { H2 } from "@hyunjinno/react-toc";
 
 ## Styling
 
+The library is built with minimal default styling,
+giving you full control over its appearance.
+It provides a set of semantic CSS classes that you can target,
+as well as props to pass your own class names.
+
+### Passing CSS classes to component
+
+`Toc` component accepts the following props for styling:
+
+| Prop                | Type     | Default | Description                                          |
+| ------------------- | -------- | ------- | ---------------------------------------------------- |
+| `className?`        | `string` | -       | CSS class for the outer `<section>` element.         |
+| `headingClassName?` | `string` | -       | CSS class for the optional heading (ex. "Contents"). |
+| `listClassName?`    | `string` | -       | CSS class for all `<ul>` elements in the TOC.        |
+| `linkClassName?`    | `string` | -       | CSS class for all `<a>` links.                       |
+| `activeClassName?`  | `string` | -       | Additional CSS class applied to the active link.     |
+
+```tsx copy filename="TocCSS.tsx" {16-20}
+"use client";
+
+import { H2, Toc, TocProvider } from "@hyunjinno/react-toc";
+
+export const TocCSS = () => {
+  return (
+    <TocProvider className="mt-5 flex flex-row justify-between rounded-lg border border-gray-100 p-4 shadow">
+      <div className="flex flex-col gap-4">
+        <H2>b.1. Heading</H2>
+        <H2>b.2. Heading</H2>
+        <H2>b.3. Heading</H2>
+        <H2>b.4. Heading</H2>
+        <H2>b.5. Heading</H2>
+      </div>
+      <Toc
+        className="w-60 bg-blue-50"
+        headingClassName="text-teal-500 text-xl pb-5"
+        listClassName="-mt-2"
+        linkClassName="text-blue-300"
+        activeClassName="font-semibold text-lg"
+      />
+    </TocProvider>
+  );
+};
+```
+
+<TocCSS />
+
+### Override existing CSS classes
+
 TODO
+
+```css copy filename="style.css"
+.react-toc-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  border-left: 1px solid #dddddd;
+  height: fit-content;
+  padding-bottom: 1rem;
+}
+
+.react-toc-wrapper-heading {
+  padding-left: 1rem;
+  font-weight: 500;
+}
+
+.react-toc-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.625rem;
+}
+
+.react-toc-link {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+
+  &:hover {
+    color: #0056b2;
+  }
+}
+
+.react-toc-active {
+  border-left: 1px solid #0056b2;
+  color: #0056b2;
+  margin-left: -1px;
+}
+
+.react-toc-h2 {
+  padding-left: 1rem;
+}
+
+.react-toc-h3 {
+  padding-left: 1.75rem;
+}
+
+.react-toc-h4 {
+  padding-left: 2.5rem;
+}
+
+.react-toc-h5 {
+  padding-left: 3.25rem;
+}
+
+.react-toc-h6 {
+  padding-left: 4rem;
+}
+```
 
 ## TocProvider
 
@@ -343,6 +450,8 @@ export const TocHeadingVisible = () => {
 
 ### Custom ScrollToOptions
 
+You can customize `ScrollToOptions` passed to window.scrollTo when a link is clicked:
+
 ```tsx copy filename="TocScrollToOptions.tsx" {17-19}
 "use client";
 
@@ -407,3 +516,5 @@ export const TocExpandAll = () => {
 <TocExpandAll />
 
 ## Using in Next.js Project
+
+TODO
