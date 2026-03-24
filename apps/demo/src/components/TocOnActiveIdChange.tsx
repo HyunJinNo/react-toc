@@ -15,7 +15,7 @@ export const TocOnActiveIdChange = () => {
   return (
     <TocProvider
       className="mt-5 flex flex-col rounded-lg border border-gray-100 p-4 shadow"
-      observerOptions={{ rootMargin: "-80% 0px -20% 0px" }}
+      observerOptions={{ rootMargin: "-50% 0px -50% 0px" }}
       onActiveIdChange={handleActiveIdChange}
     >
       <p>

@@ -21,7 +21,7 @@ interface TocProviderProps {
   observerOptions?: IntersectionObserverInit;
 
   /**
-   * Additional dependencies that will cause the TOC to be rebuilt (like the `useEffect` deps array).
+   * Additional dependencies that will cause the TOC to be rebuilt (like the useEffect deps array).
    */
   deps?: DependencyList;
 
@@ -35,7 +35,7 @@ export const TocProvider = ({
   children,
   className,
   maxDepth = 5,
-  observerOptions,
+  observerOptions = { rootMargin: "-20% 0px -80% 0px" },
   deps,
   onActiveIdChange,
 }: TocProviderProps) => {
@@ -48,108 +48,72 @@ export const TocProvider = ({
       return;
     }
 
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setActiveId(entry.target.id);
-            onActiveIdChange?.(entry.target.id, entry.target.textContent);
-          }
-        });
-      },
-      { rootMargin: "-20% 0px -80% 0px", ...observerOptions },
-    );
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          setActiveId(entry.target.id);
+          onActiveIdChange?.(entry.target.id, entry.target.textContent);
+        }
+      });
+    }, observerOptions);
 
-    const arr: TocItem[] = [];
+    const elementList = Array.from(
+      ref.current.querySelectorAll(".toc-heading"),
+    ) as HTMLElement[];
 
-    for (const element of ref.current.querySelectorAll(".toc-heading")) {
-      switch (element.tagName) {
-        case "H2":
-          arr.push({
-            tagName: element.tagName,
-            textContent: element.textContent,
-            id: element.id,
-            children: [],
-          });
-          observer.observe(element);
-          break;
-        case "H3":
-          if (maxDepth >= 2) {
-            arr[arr.length - 1].children.push({
-              tagName: element.tagName,
-              textContent: element.textContent,
-              id: element.id,
-              children: [],
-            });
-            observer.observe(element);
-          }
-          break;
-        case "H4":
-          if (maxDepth >= 3) {
-            arr[arr.length - 1].children[
-              arr[arr.length - 1].children.length - 1
-            ].children.push({
-              tagName: element.tagName,
-              textContent: element.textContent,
-              id: element.id,
-              children: [],
-            });
-            observer.observe(element);
-          }
-          break;
-        case "H5":
-          if (maxDepth >= 4) {
-            arr[arr.length - 1].children[
-              arr[arr.length - 1].children.length - 1
-            ].children[
-              arr[arr.length - 1].children[
-                arr[arr.length - 1].children.length - 1
-              ].children.length - 1
-            ].children.push({
-              tagName: element.tagName,
-              textContent: element.textContent,
-              id: element.id,
-              children: [],
-            });
-            observer.observe(element);
-          }
-          break;
-        case "H6":
-          if (maxDepth >= 5) {
-            arr[arr.length - 1].children[
-              arr[arr.length - 1].children.length - 1
-            ].children[
-              arr[arr.length - 1].children[
-                arr[arr.length - 1].children.length - 1
-              ].children.length - 1
-            ].children[
-              arr[arr.length - 1].children[
-                arr[arr.length - 1].children.length - 1
-              ].children[
-                arr[arr.length - 1].children[
-                  arr[arr.length - 1].children.length - 1
-                ].children.length - 1
-              ].children.length - 1
-            ].children.push({
-              tagName: element.tagName,
-              textContent: element.textContent,
-              id: element.id,
-              children: [],
-            });
-            observer.observe(element);
-          }
-          break;
-        default:
-          break;
+    const toc: TocItem[] = [];
+    const stack: TocItem[] = [];
+
+    const getDepth = (tagName: string) => {
+      // H2 → 0, H3 → 1, ..., H6 → 4
+      return Number(tagName.replace("H", "")) - 2;
+    };
+
+    elementList.forEach((element) => {
+      const currentDepth = getDepth(element.tagName);
+
+      if (currentDepth >= maxDepth) {
+        return;
       }
-    }
 
-    setTocItemList(arr);
+      if (
+        element.tagName !== "H2" &&
+        element.tagName !== "H3" &&
+        element.tagName !== "H4" &&
+        element.tagName !== "H5" &&
+        element.tagName !== "H6"
+      ) {
+        return;
+      }
+
+      const item: TocItem = {
+        tagName: element.tagName,
+        textContent: element.textContent,
+        id: element.id,
+        children: [],
+      };
+
+      observer.observe(element);
+
+      while (stack.length > currentDepth) {
+        stack.pop();
+      }
+
+      if (stack.length === 0) {
+        toc.push(item);
+      } else {
+        stack[stack.length - 1].children.push(item);
+      }
+
+      stack.push(item);
+    });
+
+    setTocItemList(toc);
 
     return () => {
       observer.disconnect();
     };
-  }, [maxDepth, observerOptions, onActiveIdChange, ...(deps ?? [])]);
+  }, [maxDepth, ...(deps ?? [])]);
 
   return (
     <TocContext value={{ activeId, tocItemList }}>
