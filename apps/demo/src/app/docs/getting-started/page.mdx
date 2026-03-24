@@ -104,13 +104,34 @@ All of them accept the same props as their native HTML counterparts
 They automatically:
 
 - Add the class `toc-heading`.
-- Generate an `id` by slugifying the `children` text using a built-in `slugify` function (converts text to a URL-friendly string).
+- Defer `id` generation to the `TocProvider`.
+
+### How `id` is generated
+
+Unlike typical approaches, heading `id`s are not generated during render.
+
+Instead, `TocProvider` assigns unique, URL-friendly `id`s **on the client side**
+by scanning all `.toc-heading` elements after mount.
+
+This approach ensures:
+
+- No hydration mismatch in SSR environments (ex. Next.js).
+- Stable and predictable `id` generation.
+- Automatic handling of duplicate headings.
 
 ```tsx copy
 import { H2 } from "@hyunjinno/react-toc";
 
 <H2 style={{ color: "blue" }}>My Section</H2>;
-// Renders: <h2 class="toc-heading" id="my-section" style="color: blue;">My Section</h2>
+// After hydration: <h2 class="toc-heading" id="my-section" style="color: blue;">My Section</h2>
+```
+
+If multiple headings have the same text, unique suffixes are automatically appended:
+
+```text copy
+- `my-section`
+- `my-section-1`
+- `my-section-2`
 ```
 
 ## Styling
