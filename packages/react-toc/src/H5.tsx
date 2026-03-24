@@ -1,5 +1,4 @@
 import clsx from "clsx";
-import { slugify } from "./slugify";
 
 type H5Props = Omit<
   React.ComponentProps<"h5"> & {
@@ -10,11 +9,7 @@ type H5Props = Omit<
 
 export const H5 = ({ children, ...props }: H5Props) => {
   return (
-    <h5
-      {...props}
-      className={clsx("toc-heading", props.className)}
-      id={slugify(children)}
-    >
+    <h5 {...props} className={clsx("toc-heading", props.className)}>
       {children}
     </h5>
   );

@@ -1,6 +1,7 @@
 import { DependencyList, useEffect, useRef, useState } from "react";
 import { TocItem } from "./types";
 import { TocContext } from "./TocContext";
+import { slugify } from "./slugify";
 
 interface TocProviderProps {
   children: React.ReactNode;
@@ -42,11 +43,25 @@ export const TocProvider = ({
   const ref = useRef<HTMLDivElement>(null);
   const [activeId, setActiveId] = useState("");
   const [tocItemList, setTocItemList] = useState<TocItem[]>([]);
+  const slugMapRef = useRef(new Map<string, number>());
+
+  const generateId = (text: string) => {
+    const base = slugify(text);
+
+    const map = slugMapRef.current;
+    const count = map.get(base) ?? 0;
+
+    map.set(base, count + 1);
+
+    return count === 0 ? base : `${base}-${count}`;
+  };
 
   useEffect(() => {
     if (!ref.current) {
       return;
     }
+
+    slugMapRef.current.clear();
 
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
@@ -70,6 +85,8 @@ export const TocProvider = ({
     };
 
     elementList.forEach((element) => {
+      element.id = generateId(element.textContent);
+
       const currentDepth = getDepth(element.tagName);
 
       if (currentDepth >= maxDepth) {

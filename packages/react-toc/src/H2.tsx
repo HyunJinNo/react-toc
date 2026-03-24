@@ -1,5 +1,4 @@
 import clsx from "clsx";
-import { slugify } from "./slugify";
 
 type H2Props = Omit<
   React.ComponentProps<"h2"> & {
@@ -10,11 +9,7 @@ type H2Props = Omit<
 
 export const H2 = ({ children, ...props }: H2Props) => {
   return (
-    <h2
-      {...props}
-      className={clsx("toc-heading", props.className)}
-      id={slugify(children)}
-    >
+    <h2 {...props} className={clsx("toc-heading", props.className)}>
       {children}
     </h2>
   );
