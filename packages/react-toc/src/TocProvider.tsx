@@ -5,9 +5,29 @@ import { TocContext } from "./TocContext";
 interface TocProviderProps {
   children: React.ReactNode;
   className?: string;
+
+  /**
+   * Maximum heading level to include (`1` = only H2, `2` = H2 ~ H3, etc.).
+   *
+   * default: 5
+   */
   maxDepth?: 1 | 2 | 3 | 4 | 5;
+
+  /**
+   * Options passed to the `IntersectionObserver` used for active detection.
+   *
+   * default: `{ rootMargin: "-20% 0px -80% 0px" }`
+   */
   observerOptions?: IntersectionObserverInit;
+
+  /**
+   * Additional dependencies that will cause the TOC to be rebuilt (like the `useEffect` deps array).
+   */
   deps?: DependencyList;
+
+  /**
+   * Callback fired when the active heading changes.
+   */
   onActiveIdChange?: (id: string, textContent: string) => void;
 }
 

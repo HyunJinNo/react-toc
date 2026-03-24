@@ -4,16 +4,71 @@ import { TocContext } from "./TocContext";
 import clsx from "clsx";
 
 interface TocProps {
+  /**
+   * CSS class applied to the outer `<section>` element.
+   */
   className?: string;
+
+  /**
+   * CSS class applied to the optional heading (ex. "Contents").
+   */
   headingClassName?: string;
+
+  /**
+   * Text for the optional heading.
+   *
+   * default: "Contents"
+   */
   headingText?: string;
+
+  /**
+   * show/hide the heading above the TOC.
+   *
+   * default: true
+   */
   headingVisible?: boolean;
+
+  /**
+   * CSS class applied to all `<ul>` elements in the TOC.
+   */
   listClassName?: string;
+
+  /**
+   * CSS class applied to all `<a>` links.
+   */
   linkClassName?: string;
+
+  /**
+   * Additional CSS class applied to the active link.
+   */
   activeClassName?: string;
+
+  /**
+   * Vertical offset applied when scrolling to a heading.
+   *
+   * default: 30
+   */
   offsetTop?: number;
+
+  /**
+   * Horizontal scroll offset when navigating to a heading.
+   *
+   * default: 0
+   */
   offsetLeft?: number;
+
+  /**
+   * Determines whether scrolling is instant or animates smoothly.
+   *
+   * default: "smooth"
+   */
   scrollBehavior?: ScrollBehavior;
+
+  /**
+   * If true, always show all nested levels. If false, only expand the branch containing the active heading.
+   *
+   * default: false
+   */
   expandAll?: boolean;
 }
 
