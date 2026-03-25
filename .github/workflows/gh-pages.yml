@@ -25,10 +25,6 @@ jobs:
     # Ubuntu 환경에서 실행
     runs-on: ubuntu-latest
 
-    defaults:
-      run:
-        working-directory: apps/demo
-
     steps:
       - name: Checkout code
         uses: actions/checkout@v6
@@ -49,8 +45,11 @@ jobs:
         id: setup_pages
         uses: actions/configure-pages@v5
 
-      - name: Build with Next.js
-        run: pnpm run build
+      - name: Build local package
+        run: pnpm --filter ./packages/react-toc run build
+
+      - name: Build demo
+        run: pnpm --filter ./apps/demo run build
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v4
