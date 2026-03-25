@@ -5,6 +5,7 @@ import { getPageMap } from "nextra/page-map";
 import "./globals.css";
 import "nextra-theme-docs/style.css";
 import "@hyunjinno/react-toc/style.css";
+import { Logo } from "@/components/Logo";
 
 export const metadata: Metadata = {
   title: {
@@ -16,7 +17,12 @@ export const metadata: Metadata = {
 
 const navbar = (
   <Navbar
-    logo={<b>react-toc</b>}
+    logo={
+      <div className="flex flex-row items-center gap-2">
+        <Logo width={40} height={40} />
+        <p className="font-bold">react-toc</p>
+      </div>
+    }
     projectLink="https://github.com/HyunJinNo/react-toc"
     // ... Your additional navbar options
   />
@@ -49,6 +55,7 @@ export default async function RootLayout({
       // ... Your additional head options
       >
         {/* Your additional tags should be passed as `children` of `<Head>` element */}
+        <link rel="icon" href="/react-toc.webp" sizes="any" />
       </Head>
       <body>
         <Layout
