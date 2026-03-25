@@ -1,0 +1,36 @@
+# workflow 이름 설정
+name: Publish to npm
+
+# workflow를 트리거하는 이벤트 설정
+on:
+  push:
+    tags:
+      - "v*"
+
+# 실행할 jobs 설정
+jobs:
+  publish:
+    # Ubuntu 환경에서 실행
+    runs-on: ubuntu-latest
+
+    defaults:
+      run:
+        working-directory: packages/react-toc
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v6
+
+      - name: Install Node.js
+        uses: actions/setup-node@v6
+        with:
+          # Node.js 버전 설정
+          node-version: 24
+
+      - name: Build
+        run: npm run build
+
+      - name: Publish to npm
+        run: npm publish --access public
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
