@@ -7,6 +7,11 @@ interface LogoProps {
 
 export const Logo = ({ width, height }: LogoProps) => {
   return (
-    <Image src="/react-toc.webp" alt="logo" width={width} height={height} />
+    <Image
+      src="/react-toc/react-toc.webp"
+      alt="logo"
+      width={width}
+      height={height}
+    />
   );
 };
