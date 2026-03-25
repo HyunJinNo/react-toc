@@ -1,7 +1,7 @@
 {
   "name": "@hyunjinno/react-toc",
-  "version": "1.0.0",
-  "description": "",
+  "version": "0.0.1",
+  "description": "A library that automatically generates a Table of Contents (TOC) from your headings with scroll tracking.",
   "type": "module",
   "main": "./dist/index.cjs",
   "types": "./dist/index.d.cts",
@@ -22,8 +22,15 @@
     "build": "tsdown",
     "watch": "tsdown --watch ./src"
   },
-  "keywords": [],
+  "keywords": [
+    "toc",
+    "table-of-contents"
+  ],
   "author": "HyunJinNo",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/HyunJinNo/react-toc"
+  },
   "license": "MIT",
   "peerDependencies": {
     "react": "^18 || ^19",

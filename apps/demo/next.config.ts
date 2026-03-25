@@ -5,6 +5,7 @@ const nextConfig: NextConfig = {
   /* config options here */
   reactCompiler: true,
   output: "export",
+  basePath: "/react-toc",
   images: {
     unoptimized: true,
   },
