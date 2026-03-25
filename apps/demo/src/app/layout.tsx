@@ -55,7 +55,7 @@ export default async function RootLayout({
       // ... Your additional head options
       >
         {/* Your additional tags should be passed as `children` of `<Head>` element */}
-        <link rel="icon" href="/react-toc.webp" sizes="any" />
+        <link rel="icon" href="/react-toc/react-toc.webp" sizes="any" />
       </Head>
       <body>
         <Layout
