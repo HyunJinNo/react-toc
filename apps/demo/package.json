@@ -19,7 +19,7 @@
     "lint": "eslint"
   },
   "dependencies": {
-    "@hyunjinno/react-toc": "^0.0.1",
+    "@hyunjinno/react-toc": "workspace:*",
     "next": "16.1.6",
     "nextra": "^4.6.1",
     "nextra-theme-docs": "^4.6.1",
