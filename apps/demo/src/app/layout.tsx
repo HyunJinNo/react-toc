@@ -17,6 +17,7 @@ export const metadata: Metadata = {
 const navbar = (
   <Navbar
     logo={<b>react-toc</b>}
+    projectLink="https://github.com/HyunJinNo/react-toc"
     // ... Your additional navbar options
   />
 );
