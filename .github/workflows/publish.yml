@@ -7,33 +7,36 @@ on:
     tags:
       - "v*"
 
+permissions:
+  id-token: write # Required for OIDC
+  contents: write
+
 # 실행할 jobs 설정
 jobs:
   publish:
     # Ubuntu 환경에서 실행
     runs-on: ubuntu-latest
 
-    defaults:
-      run:
-        working-directory: packages/react-toc
-
     steps:
       - name: Checkout code
         uses: actions/checkout@v6
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
 
       - name: Install Node.js
         uses: actions/setup-node@v6
         with:
           # Node.js 버전 설정
           node-version: 24
+          registry-url: "https://registry.npmjs.org"
+          cache: "pnpm"
 
-      - name: Setup pnpm
-        uses: pnpm/action-setup@v4
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
 
-      - name: Build
-        run: pnpm run build
+      - name: Build local package
+        run: pnpm --filter ./packages/react-toc run build
 
       - name: Publish to npm
-        run: pnpm publish --access public
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: pnpm --filter ./packages/react-toc publish --access public --no-git-checks --provenance
