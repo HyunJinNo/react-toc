@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.1.0](https://github.com/HyunJinNo/react-toc/compare/v1.0.0...v1.1.0) (2026-04-02)
+
+
+### Features
+
+* expandDepth 기능 ([f8cd5c8](https://github.com/HyunJinNo/react-toc/commit/f8cd5c8916628484cf1d55e91ff8fac8050a283d))
+* expandDepth 기능 추가 ([b1bb719](https://github.com/HyunJinNo/react-toc/commit/b1bb719593d4f0b2e4d1ec6681ee91f8a476429d))
+
 ## 1.0.0 (2026-03-25)
 
 
