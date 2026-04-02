@@ -7,8 +7,11 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
+    "react",
+    "react-component",
     "toc",
-    "table-of-contents"
+    "table-of-contents",
+    "ui"
   ],
   "author": "HyunJinNo",
   "homepage": "https://hyunjinno.github.io/react-toc",
