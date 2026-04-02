@@ -11,7 +11,7 @@ interface TocListProps {
   offsetLeft?: number;
   scrollBehavior?: ScrollBehavior;
   expandAll?: boolean;
-  expandDepth: 2 | 3 | 4 | 5 | 6;
+  expandDepth: 1 | 2 | 3 | 4 | 5;
   depth: number;
 }
 

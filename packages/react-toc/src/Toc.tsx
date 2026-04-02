@@ -72,11 +72,11 @@ interface TocProps {
   expandAll?: boolean;
 
   /**
-   * Always expand TOC up to this depth (2 = H2, 3 = H3, etc.).
+   * Always expand TOC up to this depth (1 = H2, 2 = H3, etc.).
    *
-   * default: 2
+   * default: 1
    */
-  expandDepth?: 2 | 3 | 4 | 5 | 6;
+  expandDepth?: 1 | 2 | 3 | 4 | 5;
 }
 
 export const Toc = ({
@@ -117,7 +117,7 @@ export const Toc = ({
               scrollBehavior={scrollBehavior}
               expandAll={expandAll}
               expandDepth={expandDepth}
-              depth={2}
+              depth={1}
             />
           ))}
         </ul>
