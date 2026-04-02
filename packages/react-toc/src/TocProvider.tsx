@@ -8,7 +8,7 @@ interface TocProviderProps {
   className?: string;
 
   /**
-   * Maximum heading level to include (`1` = only H2, `2` = H2 ~ H3, etc.).
+   * Maximum heading level to include (1 = only H2, 2 = H2 ~ H3, etc.).
    *
    * default: 5
    */

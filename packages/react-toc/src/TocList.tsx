@@ -11,6 +11,8 @@ interface TocListProps {
   offsetLeft?: number;
   scrollBehavior?: ScrollBehavior;
   expandAll?: boolean;
+  expandDepth: 2 | 3 | 4 | 5 | 6;
+  depth: number;
 }
 
 export const TocList = ({
@@ -22,7 +24,9 @@ export const TocList = ({
   offsetTop,
   offsetLeft,
   scrollBehavior,
-  expandAll = false,
+  expandAll,
+  expandDepth,
+  depth,
 }: TocListProps) => {
   const containsActive = (tocItem: TocItem): boolean => {
     if (activeId === tocItem.id) {
@@ -70,7 +74,7 @@ export const TocList = ({
         {tocItem.textContent}
       </a>
       {tocItem.children.length !== 0 &&
-        (expandAll || containsActive(tocItem)) && (
+        (expandAll || containsActive(tocItem) || depth + 1 <= expandDepth) && (
           <ul className={clsx("react-toc-list", listClassName)}>
             {tocItem.children.map((child) => (
               <TocList
@@ -84,6 +88,8 @@ export const TocList = ({
                 offsetLeft={offsetLeft}
                 scrollBehavior={scrollBehavior}
                 expandAll={expandAll}
+                expandDepth={expandDepth}
+                depth={depth + 1}
               />
             ))}
           </ul>
