@@ -23,8 +23,11 @@
     "watch": "tsdown --watch ./src"
   },
   "keywords": [
+    "react",
+    "react-component",
     "toc",
-    "table-of-contents"
+    "table-of-contents",
+    "ui"
   ],
   "author": "HyunJinNo",
   "homepage": "https://hyunjinno.github.io/react-toc",

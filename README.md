@@ -3,7 +3,13 @@
 <div align="center">
   <img src="https://github.com/HyunJinNo/react-toc/blob/main/react-toc.webp" alt="logo" width="256">
 
-![Static Badge](https://img.shields.io/badge/LICENSE-MIT-brightgreen)
+![NPM Version](https://img.shields.io/npm/v/%40hyunjinno%2Freact-toc)
+![NPM License](https://img.shields.io/npm/l/%40hyunjinno%2Freact-toc)
+![NPM Downloads](https://img.shields.io/npm/dw/%40hyunjinno%2Freact-toc)
+![NPM Unpacked Size](https://img.shields.io/npm/unpacked-size/%40hyunjinno%2Freact-toc)
+![GitHub Issues](https://img.shields.io/github/issues/HyunJinNo/react-toc)
+![GitHub Issues or Pull Requests](https://img.shields.io/github/issues-pr/HyunJinNo/react-toc)
+![GitHub Repo stars](https://img.shields.io/github/stars/HyunJinNo/react-toc?style=flat)
 
 </div>
 

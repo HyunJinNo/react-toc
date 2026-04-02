@@ -15,7 +15,8 @@ Component that renders the table of contents based on the data from `TocProvider
 | `listClassName?`    | `string`                          | -            | CSS class applied to all `<ul>` elements in the TOC.                                                        |
 | `linkClassName?`    | `string`                          | -            | CSS class applied to all `<a>` links.                                                                       |
 | `activeClassName?`  | `string`                          | -            | Additional CSS class applied to the active link.                                                            |
-| `offsetTop?`        | `number`                          | 30           | Vertical offset applied when scrolling to a heading.                                                        |
-| `offsetLeft?`       | `number`                          | 0            | Horizontal scroll offset when navigating to a heading.                                                      |
+| `offsetTop?`        | `number`                          | `30`         | Vertical offset applied when scrolling to a heading.                                                        |
+| `offsetLeft?`       | `number`                          | `0`          | Horizontal scroll offset when navigating to a heading.                                                      |
 | `scrollBehavior?`   | `"auto" \| "instant" \| "smooth"` | `"smooth"`   | Determines whether scrolling is instant or animates smoothly.                                               |
 | `expandAll?`        | `boolean`                         | `false`      | If `true`, always show all nested levels. If `false`, only expand the branch containing the active heading. |
+| `expandDepth?`      | `1 \| 2 \| 3 \| 4 \| 5`           | `2`          | Always expand TOC up to this depth (1 = H2, 2 = H3, etc.).                                                  |

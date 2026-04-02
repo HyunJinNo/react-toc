@@ -61,7 +61,8 @@ export default async function RootLayout({
         <Layout
           navbar={navbar}
           pageMap={await getPageMap()}
-          docsRepositoryBase="https://github.com/shuding/nextra/tree/main/docs"
+          docsRepositoryBase="https://github.com/HyunJinNo/react-toc"
+          editLink={null}
           footer={footer}
           // ... Your additional layout options
         >

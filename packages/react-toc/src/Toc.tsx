@@ -70,6 +70,13 @@ interface TocProps {
    * default: false
    */
   expandAll?: boolean;
+
+  /**
+   * Always expand TOC up to this depth (1 = H2, 2 = H3, etc.).
+   *
+   * default: 1
+   */
+  expandDepth?: 1 | 2 | 3 | 4 | 5;
 }
 
 export const Toc = ({
@@ -84,6 +91,7 @@ export const Toc = ({
   offsetLeft = 0,
   scrollBehavior = "smooth",
   expandAll = false,
+  expandDepth = 1,
 }: TocProps) => {
   const { activeId, tocItemList } = useContext(TocContext);
 
@@ -108,6 +116,8 @@ export const Toc = ({
               offsetLeft={offsetLeft}
               scrollBehavior={scrollBehavior}
               expandAll={expandAll}
+              expandDepth={expandDepth}
+              depth={1}
             />
           ))}
         </ul>
