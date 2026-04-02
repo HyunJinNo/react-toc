@@ -91,7 +91,7 @@ export const Toc = ({
   offsetLeft = 0,
   scrollBehavior = "smooth",
   expandAll = false,
-  expandDepth = 2,
+  expandDepth = 1,
 }: TocProps) => {
   const { activeId, tocItemList } = useContext(TocContext);
 
