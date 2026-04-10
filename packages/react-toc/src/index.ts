@@ -7,3 +7,4 @@ export { H5 } from "./H5";
 export { H6 } from "./H6";
 export { Toc } from "./Toc";
 export { TocProvider } from "./TocProvider";
+export { TocTopBar } from "./TocTopBar";

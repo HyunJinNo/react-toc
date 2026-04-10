@@ -137,6 +137,7 @@ export const TocProvider = ({
       <div className={className} ref={ref}>
         {children}
       </div>
+      <div id="react-toc-modal-root" />
     </TocContext>
   );
 };
