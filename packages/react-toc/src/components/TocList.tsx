@@ -1,3 +1,5 @@
+"use client";
+
 import { TocItem } from "@/types/types";
 
 interface TocListProps {

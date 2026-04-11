@@ -1,3 +1,5 @@
+"use client";
+
 import { TocContext } from "@/contexts/TocContext";
 import { useContext } from "react";
 import { TocList } from "./TocList";

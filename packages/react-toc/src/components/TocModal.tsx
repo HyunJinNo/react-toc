@@ -1,3 +1,5 @@
+"use client";
+
 import { TocContext } from "@/contexts/TocContext";
 import { useModalBackHandler } from "@/hooks/useModalBackHandler";
 import { usePreventBodyScroll } from "@/hooks/usePreventBodyScroll";
