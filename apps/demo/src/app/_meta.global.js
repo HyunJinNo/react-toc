@@ -28,6 +28,9 @@ const config = {
           toc: {
             title: "<Toc>",
           },
+          "toc-top-bar": {
+            title: "<TocTopBar>",
+          },
           headings: {
             title: "<H2> ~ <H6>",
           },

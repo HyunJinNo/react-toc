@@ -1,7 +1,6 @@
+import { TocContext } from "@/contexts/TocContext";
 import { useContext } from "react";
 import { TocList } from "./TocList";
-import { TocContext } from "./TocContext";
-import clsx from "clsx";
 
 interface TocProps {
   /**
@@ -96,14 +95,16 @@ export const Toc = ({
   const { activeId, tocItemList } = useContext(TocContext);
 
   return (
-    <section className={clsx("react-toc-wrapper", className)}>
+    <section className={["react-toc-wrapper", className].join(" ")}>
       {headingVisible && (
-        <h2 className={clsx("react-toc-wrapper-heading", headingClassName)}>
+        <h2
+          className={["react-toc-wrapper-heading", headingClassName].join(" ")}
+        >
           {headingText}
         </h2>
       )}
       <nav>
-        <ul className={clsx("react-toc-list", listClassName)}>
+        <ul className={["react-toc-list", listClassName].join(" ")}>
           {tocItemList.map((tocItem) => (
             <TocList
               key={tocItem.id}

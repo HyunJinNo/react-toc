@@ -1,5 +1,4 @@
-import clsx from "clsx";
-import { TocItem } from "./types";
+import { TocItem } from "@/types/types";
 
 interface TocListProps {
   activeId: string;
@@ -45,14 +44,18 @@ export const TocList = ({
   }[tocItem.tagName];
 
   return (
-    <li key={tocItem.id} className={clsx("react-toc-list", listClassName)}>
+    <li
+      key={tocItem.id}
+      className={["react-toc-list", listClassName].join(" ")}
+    >
       <a
-        className={clsx(
+        className={[
           "react-toc-link",
           levelClass,
           linkClassName,
-          activeId === tocItem.id && ["react-toc-active", activeClassName],
-        )}
+          activeClassName,
+          activeId === tocItem.id && "react-toc-active",
+        ].join(" ")}
         href={`#${tocItem.id}`}
         onClick={(e) => {
           e.preventDefault();
@@ -75,7 +78,7 @@ export const TocList = ({
       </a>
       {tocItem.children.length !== 0 &&
         (expandAll || containsActive(tocItem) || depth + 1 <= expandDepth) && (
-          <ul className={clsx("react-toc-list", listClassName)}>
+          <ul className={["react-toc-list", listClassName].join(" ")}>
             {tocItem.children.map((child) => (
               <TocList
                 key={child.id}
