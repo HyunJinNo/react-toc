@@ -1,6 +1,5 @@
-"use client";
-
-import { H2, Toc, TocProvider } from "@hyunjinno/react-toc";
+import { Toc, TocProvider } from "@hyunjinno/react-toc";
+import { H2 } from "@hyunjinno/react-toc/heading";
 
 export const TocScrollToOptions = () => {
   return (

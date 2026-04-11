@@ -1,3 +1,5 @@
+"use client";
+
 import { TocContext } from "@/contexts/TocContext";
 import { TocItem } from "@/types/types";
 import { slugify } from "@/utils/slugify";

@@ -12,6 +12,11 @@
       "import": "./dist/index.mjs",
       "require": "./dist/index.cjs"
     },
+    "./heading": {
+      "types": "./dist/heading.d.mts",
+      "import": "./dist/heading.mjs",
+      "require": "./dist/heading.cjs"
+    },
     "./style.css": "./dist/style.css"
   },
   "files": [
