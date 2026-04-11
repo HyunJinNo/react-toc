@@ -9,31 +9,43 @@ import { TocList } from "./TocList";
 interface TocModalProps {
   title: string;
   isOpen: boolean;
-  className?: string;
+  modalBackgroundClassName?: string;
   modalClassName?: string;
   modalHeaderClassName?: string;
   modalTitleClassName?: string;
+  modalContentClassName?: string;
   closeIconClassName?: string;
   listClassName?: string;
   linkClassName?: string;
   activeClassName?: string;
+  offsetTop?: number;
+  offsetLeft?: number;
+  scrollBehavior?: ScrollBehavior;
+  expandAll?: boolean;
+  expandDepth: 1 | 2 | 3 | 4 | 5;
   closeModal: () => void;
 }
 
 export const TocModal = ({
   title,
   isOpen,
-  className,
+  modalBackgroundClassName,
   modalClassName,
   modalHeaderClassName,
   modalTitleClassName,
+  modalContentClassName,
   closeIconClassName,
   listClassName,
   linkClassName,
   activeClassName,
+  offsetTop,
+  offsetLeft,
+  scrollBehavior,
+  expandAll,
+  expandDepth,
   closeModal,
 }: TocModalProps) => {
-  const ref = useRef<HTMLDivElement>(null);
+  const backgroundRef = useRef<HTMLDivElement>(null);
   const { activeId, tocItemList } = useContext(TocContext);
 
   useModalBackHandler(isOpen, closeModal);
@@ -45,10 +57,12 @@ export const TocModal = ({
 
   return createPortal(
     <div
-      className={["react-toc-modal-wrapper", className].join(" ")}
-      ref={ref}
+      className={["react-toc-modal-background", modalBackgroundClassName].join(
+        " ",
+      )}
+      ref={backgroundRef}
       onClick={(e) => {
-        if (e.target === ref.current) {
+        if (e.target === backgroundRef.current) {
           window.history.back();
           closeModal();
         }
@@ -69,8 +83,12 @@ export const TocModal = ({
             />
           </button>
         </header>
-        <nav className="react-toc-modal-content">
-          <ul className="react-toc-list">
+        <nav
+          className={["react-toc-modal-content", modalContentClassName].join(
+            " ",
+          )}
+        >
+          <ul className={["react-toc-list", listClassName].join(" ")}>
             {tocItemList.map((tocItem) => (
               <TocList
                 key={tocItem.id}
@@ -79,11 +97,11 @@ export const TocModal = ({
                 listClassName={listClassName}
                 linkClassName={linkClassName}
                 activeClassName={activeClassName}
-                offsetTop={30}
-                offsetLeft={0}
-                scrollBehavior="smooth"
-                expandAll={true}
-                expandDepth={1}
+                offsetTop={offsetTop}
+                offsetLeft={offsetLeft}
+                scrollBehavior={scrollBehavior}
+                expandAll={expandAll}
+                expandDepth={expandDepth}
                 depth={1}
               />
             ))}

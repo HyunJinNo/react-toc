@@ -13,7 +13,7 @@ import {
 export const TocTopBarExample = () => {
   return (
     <TocProvider className="mt-5 flex flex-col gap-4 truncate rounded-lg border border-gray-100 p-4 shadow">
-      <TocTopBar title="TocTopBarExample" />
+      <TocTopBar title="TocTopBarExample" expandAll={true} />
       <div className="flex flex-col gap-4">
         <H2>k.1. Heading</H2>
         <H2>k.2. Heading</H2>

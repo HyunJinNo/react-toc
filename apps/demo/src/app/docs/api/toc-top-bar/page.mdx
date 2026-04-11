@@ -1,0 +1,28 @@
+---
+title: TocTopBar
+---
+
+# \<TocTopBar>
+
+The `<TocTopBar>` component is a container for the TOC modal, providing a heading and an icon to open it.
+
+| Prop                        | Type                              | Default    | Description                                                                                                                   |
+| --------------------------- | --------------------------------- | ---------- | ----------------------------------------------------------------------------------------------------------------------------- |
+| `title`                     | `string`                          | -          | A string that represents the title of the TOC (Table of Contents). This is used to display a heading above the modal content. |
+| `topBarClassName?`          | `string`                          | -          | CSS class applied to the container of the TOC top bar.                                                                        |
+| `topBarTitleClassName?`     | `string`                          | -          | CSS class applied to the title of the TOC top bar.                                                                            |
+| `listIconClassName?`        | `string`                          | -          | CSS class applied to the list icon.                                                                                           |
+| `modalBackgroundClassName?` | `string`                          | -          | CSS class applied to the background of the TOC modal.                                                                         |
+| `modalClassName?`           | `string`                          | -          | CSS class applied to the container of the TOC modal.                                                                          |
+| `modalHeaderClassName?`     | `string`                          | -          | CSS class applied to the header of the TOC modal.                                                                             |
+| `modalTitleClassName?`      | `string`                          | -          | CSS class applied to the title of the TOC modal.                                                                              |
+| `modalContentClassName?`    | `string`                          | -          | CSS class applied to the content of the TOC modal.                                                                            |
+| `closeIconClassName?`       | `string`                          | -          | CSS class applied to the close icon.                                                                                          |
+| `listClassName?`            | `string`                          | -          | CSS class applied to all `<ul>` elements in the TOC.                                                                          |
+| `linkClassName?`            | `string`                          | -          | CSS class applied to all `<a>` links.                                                                                         |
+| `activeClassName?`          | `string`                          | -          | Additional CSS class applied to the active link.                                                                              |
+| `offsetTop?`                | `number`                          | `30`       | Vertical offset applied when scrolling to a heading.                                                                          |
+| `offsetLeft?`               | `number`                          | `0`        | Horizontal scroll offset when navigating to a heading.                                                                        |
+| `scrollBehavior?`           | `"auto" \| "instant" \| "smooth"` | `"smooth"` | Determines whether scrolling is instant or animates smoothly.                                                                 |
+| `expandAll?`                | `boolean`                         | `false`    | If `true`, always show all nested levels. If `false`, only expand the branch containing the active heading.                   |
+| `expandDepth?`              | `1 \| 2 \| 3 \| 4 \| 5`           | `2`        | Always expand TOC up to this depth (1 = H2, 2 = H3, etc.).                                                                    |
