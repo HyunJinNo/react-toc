@@ -5,7 +5,7 @@
 
 ![NPM Version](https://img.shields.io/npm/v/%40hyunjinno%2Freact-toc)
 ![NPM License](https://img.shields.io/npm/l/%40hyunjinno%2Freact-toc)
-![NPM Downloads](https://img.shields.io/npm/dw/%40hyunjinno%2Freact-toc)
+![NPM Downloads](https://img.shields.io/npm/dm/%40hyunjinno%2Freact-toc)
 ![NPM Unpacked Size](https://img.shields.io/npm/unpacked-size/%40hyunjinno%2Freact-toc)
 ![GitHub Issues](https://img.shields.io/github/issues/HyunJinNo/react-toc)
 ![GitHub Issues or Pull Requests](https://img.shields.io/github/issues-pr/HyunJinNo/react-toc)
@@ -52,9 +52,8 @@ Use the provided heading components (`H2` ~ `H6`) inside a `TocProvider`.
 Then place the `Toc` component wherever you want the table of contents to appear inside a `TocProvider`.
 
 ```tsx copy filename="TocBasic.tsx"
-"use client";
-
-import { H2, H3, H4, H5, H6, Toc, TocProvider } from "@hyunjinno/react-toc";
+import { Toc, TocProvider } from "@hyunjinno/react-toc";
+import { H2, H3, H4, H5, H6 } from "@hyunjinno/react-toc/heading";
 
 export const TocBasic = () => {
   return (
