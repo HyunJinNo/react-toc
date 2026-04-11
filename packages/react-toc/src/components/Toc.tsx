@@ -1,6 +1,6 @@
+import { TocContext } from "@/contexts/TocContext";
 import { useContext } from "react";
 import { TocList } from "./TocList";
-import { TocContext } from "./TocContext";
 
 interface TocProps {
   /**

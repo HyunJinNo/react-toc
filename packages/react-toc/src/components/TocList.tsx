@@ -1,4 +1,4 @@
-import { TocItem } from "./types";
+import { TocItem } from "@/types/types";
 
 interface TocListProps {
   activeId: string;

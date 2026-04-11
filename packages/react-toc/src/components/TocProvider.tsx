@@ -1,7 +1,7 @@
+import { TocContext } from "@/contexts/TocContext";
+import { TocItem } from "@/types/types";
+import { slugify } from "@/utils/slugify";
 import { DependencyList, useEffect, useRef, useState } from "react";
-import { TocItem } from "./types";
-import { TocContext } from "./TocContext";
-import { slugify } from "./slugify";
 
 interface TocProviderProps {
   children: React.ReactNode;

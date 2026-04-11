@@ -1,10 +1,10 @@
+import { TocContext } from "@/contexts/TocContext";
+import { useModalBackHandler } from "@/hooks/useModalBackHandler";
+import { usePreventBodyScroll } from "@/hooks/usePreventBodyScroll";
 import { useContext, useRef } from "react";
-import { createPortal } from "react-dom";
-import { useModalBackHandler } from "./hooks/useModalBackHandler";
-import { usePreventBodyScroll } from "./hooks/usePreventBodyScroll";
-import { CloseIcon } from "./CloseIcon";
-import { TocContext } from "./TocContext";
 import { TocList } from "./TocList";
+import { CloseIcon } from "./icons/CloseIcon";
+import { createPortal } from "react-dom";
 
 interface TocModalProps {
   title: string;

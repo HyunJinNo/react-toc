@@ -1,5 +1,5 @@
+import { TocItem } from "@/types/types";
 import { createContext } from "react";
-import { TocItem } from "./types";
 
 export const TocContext = createContext<{
   activeId: string;

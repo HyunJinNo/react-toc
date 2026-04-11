@@ -1,6 +1,6 @@
+import { useModal } from "@/hooks/useModal";
+import { ListIcon } from "./icons/ListIcon";
 import { TocModal } from "./TocModal";
-import { useModal } from "./hooks/useModal";
-import { ListIcon } from "./ListIcon";
 
 interface TocTopBarProps {
   /**
