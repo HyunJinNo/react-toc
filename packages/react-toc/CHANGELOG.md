@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.0](https://github.com/HyunJinNo/react-toc/compare/v1.1.0...v1.2.0) (2026-04-11)
+
+
+### Features
+
+* TocTopBar 컴포넌트 ([#14](https://github.com/HyunJinNo/react-toc/issues/14)) ([f79c5da](https://github.com/HyunJinNo/react-toc/commit/f79c5da4bbfb03f54733504679fe82373c2cd36d))
+
 ## [1.1.0](https://github.com/HyunJinNo/react-toc/compare/v1.0.0...v1.1.0) (2026-04-02)
 
 
