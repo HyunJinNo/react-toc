@@ -1,6 +1,7 @@
 "use client";
 
-import { H2, H3, H4, H5, H6, Toc, TocProvider } from "@hyunjinno/react-toc";
+import { Toc, TocProvider } from "@hyunjinno/react-toc";
+import { H2, H3, H4, H5, H6 } from "@hyunjinno/react-toc/heading";
 import { useState } from "react";
 
 export const TocOnActiveIdChange = () => {

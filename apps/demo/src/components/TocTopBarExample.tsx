@@ -1,14 +1,5 @@
-"use client";
-
-import {
-  H2,
-  H3,
-  H4,
-  H5,
-  H6,
-  TocProvider,
-  TocTopBar,
-} from "@hyunjinno/react-toc";
+import { TocProvider, TocTopBar } from "@hyunjinno/react-toc";
+import { H2, H3, H4, H5, H6 } from "@hyunjinno/react-toc/heading";
 
 export const TocTopBarExample = () => {
   return (

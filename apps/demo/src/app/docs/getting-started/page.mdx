@@ -21,7 +21,7 @@ import { TocTopBarExample } from "@/components/TocTopBarExample";
 
 ## Installation
 
-Run the following commands in the `React` project directory:
+Run the following command in the `React` project directory:
 
 npm:
 
@@ -47,7 +47,7 @@ pnpm add @hyunjinno/react-toc
 
 ### Step 1.
 
-Import the CSS file at the entry point of the application
+Import the CSS file at the entry point of the application.
 
 ```tsx copy
 import "@hyunjinno/react-toc/style.css";
@@ -60,9 +60,8 @@ Use the provided heading components (`H2` ~ `H6`) inside a `TocProvider`.
 Then place the `Toc` component wherever you want the table of contents to appear inside a `TocProvider`.
 
 ```tsx copy filename="TocBasic.tsx"
-"use client";
-
-import { H2, H3, H4, H5, H6, Toc, TocProvider } from "@hyunjinno/react-toc";
+import { Toc, TocProvider } from "@hyunjinno/react-toc";
+import { H2, H3, H4, H5, H6 } from "@hyunjinno/react-toc/heading";
 
 export const TocBasic = () => {
   return (
@@ -122,7 +121,7 @@ This approach ensures:
 - Automatic handling of duplicate headings.
 
 ```tsx copy
-import { H2 } from "@hyunjinno/react-toc";
+import { H2 } from "@hyunjinno/react-toc/heading";
 
 <H2 style={{ color: "blue" }}>My Section</H2>;
 // After hydration: <h2 class="toc-heading" id="my-section" style="color: blue;">My Section</h2>
@@ -158,10 +157,9 @@ You can style the TOC in two ways:
 | `linkClassName?`    | `string` | -       | CSS class for all `<a>` links.                       |
 | `activeClassName?`  | `string` | -       | Additional CSS class applied to the active link.     |
 
-```tsx copy filename="TocCSS.tsx" {16-20}
-"use client";
-
-import { H2, Toc, TocProvider } from "@hyunjinno/react-toc";
+```tsx copy filename="TocCSS.tsx" {15-19}
+import { Toc, TocProvider } from "@hyunjinno/react-toc";
+import { H2 } from "@hyunjinno/react-toc/heading";
 
 export const TocCSS = () => {
   return (
@@ -352,10 +350,9 @@ import "my-style.css";
 
 Limit the TOC to only H2 and H3 headings:
 
-```tsx copy filename="TocMaxDepth.tsx" {9,12-14,18-19}
-"use client";
-
-import { H2, H3, H4, H5, H6, Toc, TocProvider } from "@hyunjinno/react-toc";
+```tsx copy filename="TocMaxDepth.tsx" {8,11-13,17-18}
+import { Toc, TocProvider } from "@hyunjinno/react-toc";
+import { H2, H3, H4, H5, H6 } from "@hyunjinno/react-toc/heading";
 
 export const TocMaxDepth = () => {
   return (
@@ -386,10 +383,9 @@ export const TocMaxDepth = () => {
 `TocProvider` tracks the active heading via an `Intersection Observer`.
 You can customize intersection observer options:
 
-```tsx copy filename="TocIntersectionObserverOptions.tsx" {9}
-"use client";
-
-import { H2, Toc, TocProvider } from "@hyunjinno/react-toc";
+```tsx copy filename="TocIntersectionObserverOptions.tsx" {8}
+import { Toc, TocProvider } from "@hyunjinno/react-toc";
+import { H2 } from "@hyunjinno/react-toc/heading";
 
 export const TocIntersectionObserverOptions = () => {
   return (
@@ -417,10 +413,11 @@ export const TocIntersectionObserverOptions = () => {
 If your content changes after mount, you need to trigger a rebuild of the TOC.
 Pass a dependency array via the `deps` prop:
 
-```tsx copy filename="TocDeps.tsx" {7-13,18}
+```tsx copy filename="TocDeps.tsx" {8-14,19}
 "use client";
 
-import { H2, Toc, TocProvider } from "@hyunjinno/react-toc";
+import { Toc, TocProvider } from "@hyunjinno/react-toc";
+import { H2 } from "@hyunjinno/react-toc/heading";
 import { useState } from "react";
 
 export const TocDeps = () => {
@@ -460,10 +457,11 @@ export const TocDeps = () => {
 
 React to active heading changes, e.g., for analytics:
 
-```tsx copy filename="TocOnActiveIdChange.tsx" {7-13, 19, 21-27}
+```tsx copy filename="TocOnActiveIdChange.tsx" {8-14, 20, 22-28}
 "use client";
 
-import { H2, H3, H4, H5, H6, Toc, TocProvider } from "@hyunjinno/react-toc";
+import { Toc, TocProvider } from "@hyunjinno/react-toc";
+import { H2, H3, H4, H5, H6 } from "@hyunjinno/react-toc/heading";
 import { useState } from "react";
 
 export const TocOnActiveIdChange = () => {
@@ -518,10 +516,9 @@ export const TocOnActiveIdChange = () => {
 
 You can change TOC title:
 
-```tsx copy filename="TocHeadingText.tsx" {18}
-"use client";
-
-import { H2, Toc, TocProvider } from "@hyunjinno/react-toc";
+```tsx copy filename="TocHeadingText.tsx" {17}
+import { Toc, TocProvider } from "@hyunjinno/react-toc";
+import { H2 } from "@hyunjinno/react-toc/heading";
 
 export const TocHeadingText = () => {
   return (
@@ -549,10 +546,9 @@ export const TocHeadingText = () => {
 
 The TOC title can be hidden:
 
-```tsx copy filename="TocHeadingVisible.tsx" {15}
-"use client";
-
-import { H2, Toc, TocProvider } from "@hyunjinno/react-toc";
+```tsx copy filename="TocHeadingVisible.tsx" {14}
+import { Toc, TocProvider } from "@hyunjinno/react-toc";
+import { H2 } from "@hyunjinno/react-toc/heading";
 
 export const TocHeadingVisible = () => {
   return (
@@ -576,10 +572,9 @@ export const TocHeadingVisible = () => {
 
 You can customize `ScrollToOptions` passed to window.scrollTo when a link is clicked:
 
-```tsx copy filename="TocScrollToOptions.tsx" {17-19}
-"use client";
-
-import { H2, Toc, TocProvider } from "@hyunjinno/react-toc";
+```tsx copy filename="TocScrollToOptions.tsx" {16-18}
+import { Toc, TocProvider } from "@hyunjinno/react-toc";
+import { H2 } from "@hyunjinno/react-toc/heading";
 
 export const TocScrollToOptions = () => {
   return (
@@ -609,10 +604,9 @@ export const TocScrollToOptions = () => {
 The `expandAll` prop determines whether all nested levels are always visible (`true`)
 or only the branch containing the active heading is expanded (`false`).
 
-```tsx copy filename="TocExpandAll.tsx" {22}
-"use client";
-
-import { H2, H3, H4, H5, H6, Toc, TocProvider } from "@hyunjinno/react-toc";
+```tsx copy filename="TocExpandAll.tsx" {21}
+import { Toc, TocProvider } from "@hyunjinno/react-toc";
+import { H2, H3, H4, H5, H6 } from "@hyunjinno/react-toc/heading";
 
 export const TocExpandAll = () => {
   return (
@@ -644,10 +638,9 @@ export const TocExpandAll = () => {
 The `expandDepth` prop specifies the maximum depth of headings that should be expanded by default in the `TOC`.
 All headings at or below this depth will be always visible, regardless of the current active heading.
 
-```tsx copy filename="TocExpandDepth.tsx" {22}
-"use client";
-
-import { H2, H3, H4, H5, H6, Toc, TocProvider } from "@hyunjinno/react-toc";
+```tsx copy filename="TocExpandDepth.tsx" {21}
+import { Toc, TocProvider } from "@hyunjinno/react-toc";
+import { H2, H3, H4, H5, H6 } from "@hyunjinno/react-toc/heading";
 
 export const TocExpandDepth = () => {
   return (
@@ -678,18 +671,9 @@ export const TocExpandDepth = () => {
 
 The `<TocTopBar>` component is a container for the TOC modal, providing a heading and an icon to open it.
 
-```tsx copy filename="TocTopBarExample.tsx" {16}
-"use client";
-
-import {
-  H2,
-  H3,
-  H4,
-  H5,
-  H6,
-  TocProvider,
-  TocTopBar,
-} from "@hyunjinno/react-toc";
+```tsx copy filename="TocTopBarExample.tsx" {7}
+import { TocProvider, TocTopBar } from "@hyunjinno/react-toc";
+import { H2, H3, H4, H5, H6 } from "@hyunjinno/react-toc/heading";
 
 export const TocTopBarExample = () => {
   return (
