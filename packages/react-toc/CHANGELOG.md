@@ -1,5 +1,16 @@
 # Changelog
 
+## [2.0.0](https://github.com/HyunJinNo/react-toc/compare/v1.2.0...v2.0.0) (2026-04-11)
+
+
+### ⚠ BREAKING CHANGES
+
+* server/client 분리 설계 ([#17](https://github.com/HyunJinNo/react-toc/issues/17))
+
+### Code Refactoring
+
+* server/client 분리 설계 ([#17](https://github.com/HyunJinNo/react-toc/issues/17)) ([539392d](https://github.com/HyunJinNo/react-toc/commit/539392db22756205cfb6284e7a09997a431a35e4))
+
 ## [1.2.0](https://github.com/HyunJinNo/react-toc/compare/v1.1.0...v1.2.0) (2026-04-11)
 
 
