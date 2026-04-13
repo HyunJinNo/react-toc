@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.0.1](https://github.com/HyunJinNo/react-toc/compare/v2.0.0...v2.0.1) (2026-04-13)
+
+
+### Bug Fixes
+
+* activeClassName 기능 오류 수정 ([#20](https://github.com/HyunJinNo/react-toc/issues/20)) ([ea17639](https://github.com/HyunJinNo/react-toc/commit/ea176395e6bd756c0e5179df2a813cc5e8fcb667))
+
 ## [2.0.0](https://github.com/HyunJinNo/react-toc/compare/v1.2.0...v2.0.0) (2026-04-11)
 
 
