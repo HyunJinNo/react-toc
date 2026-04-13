@@ -55,8 +55,7 @@ export const TocList = ({
           "react-toc-link",
           levelClass,
           linkClassName,
-          activeClassName,
-          activeId === tocItem.id && "react-toc-active",
+          activeId === tocItem.id && `react-toc-active ${activeClassName}`,
         ].join(" ")}
         href={`#${tocItem.id}`}
         onClick={(e) => {
