@@ -6,6 +6,7 @@
 ![NPM Version](https://img.shields.io/npm/v/%40hyunjinno%2Freact-toc)
 ![NPM License](https://img.shields.io/npm/l/%40hyunjinno%2Freact-toc)
 ![NPM Downloads](https://img.shields.io/npm/dm/%40hyunjinno%2Freact-toc)
+![npm package minimized gzipped size](https://img.shields.io/bundlejs/size/%40hyunjinno%2Freact-toc)
 ![NPM Unpacked Size](https://img.shields.io/npm/unpacked-size/%40hyunjinno%2Freact-toc)
 ![GitHub Issues](https://img.shields.io/github/issues/HyunJinNo/react-toc)
 ![GitHub Issues or Pull Requests](https://img.shields.io/github/issues-pr/HyunJinNo/react-toc)
