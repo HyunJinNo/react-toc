@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.0.2](https://github.com/HyunJinNo/react-toc/compare/v2.0.1...v2.0.2) (2026-04-21)
+
+
+### Bug Fixes
+
+* tsdown 번들러에서 minify 옵션 설정 ([#23](https://github.com/HyunJinNo/react-toc/issues/23)) ([3f803b6](https://github.com/HyunJinNo/react-toc/commit/3f803b65f70875771e0d0ddf280426e12356a19d))
+
 ## [2.0.1](https://github.com/HyunJinNo/react-toc/compare/v2.0.0...v2.0.1) (2026-04-13)
 
 
